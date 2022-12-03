@@ -2,7 +2,7 @@
 
 **Developed by Kittipich "Luke" Aiumbhornsin**
 
-**Last updated on December 3, 2022**
+**Last updated on December 4, 2022 @00:13**
 
 - Home page/landing page are set to be login page
 - People specified below able to login with pre-defined accounts
@@ -37,6 +37,7 @@
 	- datetime finish_time | time that user finish the game
 	- int score, not null, default = 0 | final score for each time that user completed the game
 	- int counter, not null | shows what time they have completed (not datetime but in first, second, third...)
+	- str played_by, not null, foreign key(user.fname) | user: one-to-many relationship :game
 - DB for Question:
 	- int q_id, primary key | question id
 	- str q, not null | question
@@ -48,7 +49,7 @@
 	- [Development only] for root view is "/..root-template-view/
 	- for cake page is "/<string:alias>/cake/
 	- for game landing page is "<string:alias>/have-fun-with-my-game/"
-	- for game page 1 to n is "<string:alias>/have-fun-with-my-game/page-[x]/" where x is the sum of n number of the page. i.e. page 1 x =1, page 2 x=3
+	- for game page 1 to n is "<string:alias>/have-fun-with-my-game/play/"
 	- for account management landing page is "<string:alias>/account-management/
 	- for changing account password is "<string:alias>/account-management/change-password/
 	- for checking pre-defined accounts is "/check/"
@@ -56,10 +57,13 @@
 	- for game result page is "<string:alias>/have-fun-with-my-game/<int:id>/this-is-your-performance/"
 	- for adding more question is "<string:alias>/have-fun-with-my-game/add-question/"
 	- for select to see performance form ('POST' method only) is "<string:alias>/have-fun-with-my-game/performance-look-up/query-by-id/"
-- cake pagee contains
+- cake page contains
 	- a button leads to customized features page
 	- a button leads to game
 	- a button leads to account management page
+	- a button leads to about page
+	- a button to say something to me
+	- a button leads to report bugs
 - game landing page contains
 	- a button leads to add more question if the logged in user is myself 
 	- start button
@@ -70,3 +74,18 @@
 - login page contains
 	- login form
 	- a button leads to check pre-defined accounts
+- about page contains
+	- brief info of myself
+	- about the application
+	- a button leads to report bugs
+	- contact me
+- root template view contains
+	- navbar
+		- cake
+		- celebrate
+		- game
+		- about
+		- account
+	- footer
+		- about the app
+		- copyright myself
