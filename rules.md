@@ -1,0 +1,72 @@
+# Christmas 2022 App rules
+
+**Developed by Kittipich "Luke" Aiumbhornsin**
+
+**Last updated on December 3, 2022**
+
+- Home page/landing page are set to be login page
+- People specified below able to login with pre-defined accounts
+	- Pa & Ma
+	- Dad & Mom
+	- Kwan & Wish
+	- Anna
+	- Aj. Trithep & Aj. Jade
+	- Candice
+	- Addy & Evander
+	- Noemi
+	- myself (with some conditions)
+- Use their capitalized first name as their username
+- Use their birthday in format YYYY-MM-DD as default password
+- They have ability to change their password in the future
+- No sign-up available
+- Have guest view
+- Home page contains buttons linked to
+	If any login status
+		- general celebration view
+		- how well you know me game
+	If logged in status only
+		- Customized app/memories/features for user only
+- DB for User:
+	- str fname, not null, primary key | First name
+	- str password, not null | Password
+	- str alias, not null | Alias
+	- foreign key game.id | Relationship with Game
+- DB for Game:
+	- int id, primary key | points database ref
+	- datetime start_time | time that start playing game
+	- datetime finish_time | time that user finish the game
+	- int score, not null, default = 0 | final score for each time that user completed the game
+	- int counter, not null | shows what time they have completed (not datetime but in first, second, third...)
+- DB for Question:
+	- int q_id, primary key | question id
+	- str q, not null | question
+	- str a, nullable | answer
+- Landing page after logged in is called "cake"
+- Endpoint settings
+	- for landing page is "/"
+	- for general celebration view is "/joy-is-arrived/
+	- [Development only] for root view is "/..root-template-view/
+	- for cake page is "/<string:alias>/cake/
+	- for game landing page is "<string:alias>/have-fun-with-my-game/"
+	- for game page 1 to n is "<string:alias>/have-fun-with-my-game/page-[x]/" where x is the sum of n number of the page. i.e. page 1 x =1, page 2 x=3
+	- for account management landing page is "<string:alias>/account-management/
+	- for changing account password is "<string:alias>/account-management/change-password/
+	- for checking pre-defined accounts is "/check/"
+	- for about page is "/about/"
+	- for game result page is "<string:alias>/have-fun-with-my-game/<int:id>/this-is-your-performance/"
+	- for adding more question is "<string:alias>/have-fun-with-my-game/add-question/"
+	- for select to see performance form ('POST' method only) is "<string:alias>/have-fun-with-my-game/performance-look-up/query-by-id/"
+- cake pagee contains
+	- a button leads to customized features page
+	- a button leads to game
+	- a button leads to account management page
+- game landing page contains
+	- a button leads to add more question if the logged in user is myself 
+	- start button
+	- select to see performance by id and finish_time
+- account management page contains
+	- last performance score
+	- a button leads to change account password page
+- login page contains
+	- login form
+	- a button leads to check pre-defined accounts
