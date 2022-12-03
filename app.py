@@ -12,4 +12,4 @@ print("Environment Variable: "+ en_var('christmas_app2022'))
 # print(pytz.all_timezones) # List out all the timezone available
 if __name__ == '__main__':
     app = create_app()
-    app.run(debug=True, port=78665)
+    app.run(debug=True, port=9999)

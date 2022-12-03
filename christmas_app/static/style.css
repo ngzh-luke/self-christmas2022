@@ -1,1 +1,5 @@
-/* import customized font from Google */
+@import url('https://fonts.googleapis.com/css2?family=Kodchasan:ital,wght@0,400;0,700;1,400;1,700&display=swap'); /* import customized font from Google */
+
+body {
+    font-family: 'Kodchasan', sans-serif;
+}

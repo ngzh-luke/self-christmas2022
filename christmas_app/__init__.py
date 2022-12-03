@@ -3,11 +3,11 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_bcrypt import Bcrypt, generate_password_hash
 from flask_login import LoginManager, current_user
 from flask import Flask, Blueprint, render_template, abort, flash
-from .models import User
 from decouple import config as en_var # import the environment var
 
-DB_NAME = "christmas_app2022_database.sqlite"
 db = SQLAlchemy()
+DB_NAME = "christmas_app2022_database.sqlite"
+
 def create_app():
     app = Flask(__name__)
     f_bcrypt = Bcrypt()
@@ -19,35 +19,33 @@ def create_app():
     app.config['TIMEZONE'] = 'Asia/Bangkok'
     
     f_bcrypt.init_app(app)
-    db.init_app(app)
+    # db.init_app(app)
 
-    # from .views.general import views
-    # from .views.authen import auth
+    from .views import views
+    from .authen import auth
     # from .views.dashboard_admin import admin_dashboard
     # from .views.dashboard_user import user_dashboard
-    # app.register_blueprint(rootView, url_prefix='/')
-    # app.register_blueprint(views, url_prefix='/')
-    # app.register_blueprint(auth, url_prefix='/')
+    app.register_blueprint(rootView, url_prefix='/')
+    app.register_blueprint(views, url_prefix='/')
+    app.register_blueprint(auth, url_prefix='/')
     # app.register_blueprint(admin_dashboard, url_prefix='/')
     # app.register_blueprint(user_dashboard, url_prefix='/')
 
-    with app.app_context(): # Drop all of the tables
-        db.drop_all()
+    # with app.app_context(): # Drop all of the tables
+    #     db.drop_all()
 
-    with app.app_context():
-        db.create_all()
+    # with app.app_context():
+    #     db.create_all()
 
-
+    from .models import User
     @app.before_first_request
     def demo_account():
         try:
 
-            d1 = User(email="demo@admin.com", fname="Admin", lname="Admin Lastname", password=generate_password_hash("admin").decode('utf-8'),
-             role_level=1, s_question='question', s_answer='answer')
+            d1 = User(fname="Admin", lname="Admin Lastname", password=generate_password_hash("admin").decode('utf-8'))
             
-            d2 = User(email='demo@user.com',fname="User", lname="User Lastname", 
-            password=generate_password_hash("user").decode('utf-8'),s_question='question', 
-            s_answer='answer')    
+            d2 = User(fname="User", lname="User Lastname", 
+            password=generate_password_hash("user").decode('utf-8'))    
             
             db.session.add_all([d1, d2])
             db.session.commit()
@@ -85,8 +83,8 @@ class About():
     def getSystemVersion(self) -> str:
         return str(self.version)
 
-systemInfoObject = About(version=0.2, status='Initial Development#2',
-                         build=20221204, version_note='database schema implemented and initial developed')
+systemInfoObject = About(version=0.22, status='Initial Development#2.2',
+                         build=20221204, version_note='comprehensive application draft implemented')
 systemInfo = systemInfoObject.__repr__()
 systemVersion = systemInfoObject.getSystemVersion()
 
@@ -95,4 +93,4 @@ rootView = Blueprint('rootView', __name__)
 def root_view():
     return render_template("root.html", about=systemInfo, user=current_user)
 
-# Initial Development#2: database schema implemented and initial developed on December 4, 2022 -> **0.2**
+# - Initial Development#2.2: comprehensive application draft implemented on December 4, 2022 -> **0.22**
