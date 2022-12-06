@@ -83,8 +83,8 @@ class About():
     def getSystemVersion(self) -> str:
         return str(self.version)
 
-systemInfoObject = About(version=0.22, status='Initial Development#2.2',
-                         build=20221204, version_note='comprehensive application draft implemented')
+systemInfoObject = About(version=0.221, status='Initial Development#3',
+                         build=20221207, version_note='offline cdn implemented with SweetAlert2 tested')
 systemInfo = systemInfoObject.__repr__()
 systemVersion = systemInfoObject.getSystemVersion()
 
@@ -93,4 +93,4 @@ rootView = Blueprint('rootView', __name__)
 def root_view():
     return render_template("root.html", about=systemInfo, user=current_user)
 
-# - Initial Development#2.2: comprehensive application draft implemented on December 4, 2022 -> **0.22**
+# - Initial Development#3: offline cdn implemented with SweetAlert2 tested on December 7, 2022 -> **0.221**

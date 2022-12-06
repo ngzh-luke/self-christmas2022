@@ -15,3 +15,5 @@ Config the System version in **init**.py
 - Initial Development#2: database schema implemented and initial developed on December 4, 2022 -> **0.2**
 
 - Initial Development#2.2: comprehensive application draft implemented on December 4, 2022 -> **0.22**
+
+- Initial Development#3: offline cdn implemented with SweetAlert2 tested on December 7, 2022 -> **0.221**
