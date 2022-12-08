@@ -1,1 +1,73 @@
-{% extends 'root.html' %} {% block title %} LOGIN {% endblock %}
+{% extends 'root.html' %} {% block title %} LOGIN {% endblock %} {% block body
+%}
+<div class="mx-5 my-2 py-4 px-5">
+  <h2 align="center">LOGIN</h2>
+
+  <form class="form-control form-control-lg border border-3 border-success">
+    <div class="py-2 my-2" align="center">
+      <label for="inputUsername" class="my-2">Username</label>
+      <input
+        type="text"
+        class="form-control"
+        id="inputUsername"
+        name="inputUsername"
+        placeholder="First Name"
+      />
+    </div>
+    <div class="py-2" align="center">
+      <label for="inputPassword" class="my-2">Password</label>
+      <input
+        type="password"
+        class="form-control"
+        id="inputPassword"
+        name="inputPassword"
+        placeholder="Password"
+      />
+    </div>
+    <div class="row gap-2 py-2">
+      <button type="submit" class="btn btn-lg btn-primary mb-3" align="center">
+        Confirm Identity
+      </button>
+    </div>
+
+    <div class="py-1 my-2" align="center">
+      <button type="button" class="btn btn-secondary mb-3" onclick="check()">
+        Not sure you have pre-defined account?
+      </button>
+    </div>
+  </form>
+</div>
+<div class="px-5 my-2" id="checker" align="center">
+  <div class="col-7 row-auto">
+    <form
+      class="form-control py-2 my-2 border border-3 border-info"
+      role="search"
+      action="/check/"
+    >
+      <h4>Check pre-defined account</h4>
+      <input
+        class="form-control me-2"
+        type="search"
+        placeholder="Search"
+        aria-label="Search"
+        name="account_"
+      />
+      <div class="my-2"><input type="submit" class="btn-lg" /></div>
+    </form>
+  </div>
+
+  *******
+</div>
+<script>
+  var state = document.getElementById("checker");
+  state.style.display = "none";
+  function check() {
+    if (state.style.display === "none") {
+      state.style.display = "block";
+    } else {
+      state.style.display = "none";
+    }
+    // document.getElementById("checker").style.display = "block";
+  }
+</script>
+{% endblock %}

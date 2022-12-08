@@ -42,9 +42,9 @@ def create_app():
     def demo_account():
         try:
 
-            d1 = User(fname="Admin", lname="Admin Lastname", password=generate_password_hash("admin").decode('utf-8'))
+            d1 = User(fname="Admin", lname="Lastname", password=generate_password_hash("admin").decode('utf-8'))
             
-            d2 = User(fname="User", lname="User Lastname", 
+            d2 = User(fname="User", lname="Lastname", 
             password=generate_password_hash("user").decode('utf-8'))    
             
             db.session.add_all([d1, d2])
@@ -77,15 +77,15 @@ class About():
         self.build = build
         self.version_note = version_note
 
-    def __repr__(self) -> str:
+    def __str__(self) -> str:
         return str("{ " + f"Version: {self.version} | Status: {self.status} | Build: {self.build} | Details: {self.version_note}" + " }")
 
     def getSystemVersion(self) -> str:
         return str(self.version)
 
-systemInfoObject = About(version=0.221, status='Initial Development#3',
-                         build=20221207, version_note='offline cdn implemented with SweetAlert2 tested')
-systemInfo = systemInfoObject.__repr__()
+systemInfoObject = About(version=0.23, status='Initial Development#4',
+                         build=20221209, version_note='login page and pre-account draft implemented')
+systemInfo = systemInfoObject.__str__()
 systemVersion = systemInfoObject.getSystemVersion()
 
 rootView = Blueprint('rootView', __name__)
@@ -93,4 +93,4 @@ rootView = Blueprint('rootView', __name__)
 def root_view():
     return render_template("root.html", about=systemInfo, user=current_user)
 
-# - Initial Development#3: offline cdn implemented with SweetAlert2 tested on December 7, 2022 -> **0.221**
+# - Initial Development#4: login page and pre-account draft implemented on December 9, 2022 -> **0.23**

@@ -1,5 +1,4 @@
 from flask import render_template, Blueprint, request, flash, redirect, url_for, session, abort
-from . import systemInfo, systemVersion
 from flask_login import login_user, login_required, logout_user, current_user
 from flask_bcrypt import check_password_hash
 from .models import User
@@ -36,4 +35,11 @@ def logIn():
         else:
             flash("Username is incorrect!", category= 'error') 
     
-    return render_template('login.html', systemVersion =systemVersion, about=systemInfo, user=current_user)
+    return render_template('login.html',user=current_user)
+
+
+
+@auth.route('/check/', methods=["POST"])
+def check():
+    flash('success!!!', category='success')
+    return

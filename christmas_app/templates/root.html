@@ -1,4 +1,5 @@
 <!-- This is a root template html which it will be inherited to other pages -->
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -41,6 +42,7 @@
     <!-- BS J Offline access -->
     <script src="{{url_for('static', filename='offline_cdn/bs5-2-3j.js')}}"></script>
   </head>
+
   <body onload="getLcTime();">
     {% block root %}
     <script type="text/javascript">
@@ -51,7 +53,7 @@
         mytime = setTimeout("getLcTime()", refresh);
         document.getElementById("ct").innerHTML = lt;
       }
-      Swal.fire("Present is avaliable");
+      Swal.fire("Surprise Present is ready for you!");
     </script>
 
     <nav
@@ -124,7 +126,29 @@
         </div>
       </div>
     </nav>
-    {% endblock %} {% block body %} {% endblock %} {% block footer %} {%
-    endblock %}
+
+    <div class="mx-2 py-2 px-2"></div>
+    {% endblock %}
+    <!-- Begin alerts -->
+    {% with messages = get_flashed_messages(with_categories=true) %} {% if
+    messages %} {% for category, message in messages %}
+
+    <script>
+      Swal.fire({
+        title: "{{ category.title() }}!",
+        // success , error , warning ,info
+
+        text: "{{ message }}",
+        // Custom message flashed from your flask routes
+
+        icon: "{{ category }}" == "danger" ? "error" : "{{ category }}",
+        // success , error , warning ,info
+      });
+    </script>
+
+    {% endfor %} {% endif %} {% endwith %}
+
+    <!-- End alerts -->
+    {% block body %} {% endblock %} {% block footer %} {% endblock %}
   </body>
 </html>
