@@ -8,6 +8,7 @@
 - People specified below able to login with pre-defined accounts
   - Pa & Ma
   - Dad & Mom
+  - Papa & Grandma
   - Kwan & Wish
   - Anna
   - Aj. Trithep & Aj. Jade
