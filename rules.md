@@ -2,7 +2,7 @@
 
 **Developed by Kittipich "Luke" Aiumbhornsin**
 
-**Last updated on December 4, 2022 @03:45**
+**Last updated on December 8, 2022 @22:31**
 
 - Home page/landing page are set to be login page
 - People specified below able to login with pre-defined accounts
