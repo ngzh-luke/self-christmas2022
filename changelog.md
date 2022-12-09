@@ -19,3 +19,5 @@ Config the System version in **init**.py
 - Initial Development#3: offline cdn implemented with SweetAlert2 tested on December 7, 2022 -> **0.221**
 
 - Initial Development#4: login page and pre-account draft implemented on December 9, 2022 -> **0.23**
+
+- Initial Development#5: login system meets expectation, some pre-defined accounts defined, and huge overall improvements on December 10, 2022 -> **0.32**

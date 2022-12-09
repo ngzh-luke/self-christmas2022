@@ -1,5 +1,6 @@
 # Root file of the system
 from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy.exc import PendingRollbackError
 from flask_bcrypt import Bcrypt, generate_password_hash
 from flask_login import LoginManager, current_user
 from flask import Flask, Blueprint, render_template, abort, flash
@@ -19,7 +20,7 @@ def create_app():
     app.config['TIMEZONE'] = 'Asia/Bangkok'
     
     f_bcrypt.init_app(app)
-    # db.init_app(app)
+    db.init_app(app)
 
     from .views import views
     from .authen import auth
@@ -31,27 +32,40 @@ def create_app():
     # app.register_blueprint(admin_dashboard, url_prefix='/')
     # app.register_blueprint(user_dashboard, url_prefix='/')
 
-    # with app.app_context(): # Drop all of the tables
-    #     db.drop_all()
+    with app.app_context(): # Drop all of the tables
+        db.drop_all()
 
-    # with app.app_context():
-    #     db.create_all()
+    with app.app_context():
+        db.create_all()
 
     from .models import User
     @app.before_first_request
     def demo_account():
         try:
 
-            d1 = User(fname="Admin", lname="Lastname", password=generate_password_hash("admin").decode('utf-8'))
+            d1 = User(fname="ADMIN", alias="test1", password=generate_password_hash("admin").decode('utf-8'))
             
-            d2 = User(fname="User", lname="Lastname", 
+            d2 = User(fname="USER", alias="test2", 
             password=generate_password_hash("user").decode('utf-8'))    
             
             db.session.add_all([d1, d2])
             db.session.commit()
+       
         except Exception as e:
+            db.session.rollback()
             flash(f'{e}', category='error')
-            
+
+    from .accounts import create_accounts
+    @app.before_first_request
+    def accounters():
+        try:
+            a = create_accounts()
+            db.session.add_all(a)
+            db.session.commit()
+        
+        except Exception as e:
+            db.session.rollback()
+            flash(f'{e}', category='error')
 
     login_manager = LoginManager()
     login_manager.login_view = 'auth.logIn'
@@ -78,13 +92,17 @@ class About():
         self.version_note = version_note
 
     def __str__(self) -> str:
-        return str("{ " + f"Version: {self.version} | Status: {self.status} | Build: {self.build} | Details: {self.version_note}" + " }")
+        return str("{ " + f"Version: {self.version} | Status: {self.status} | Build: {self.build} | Updates: {self.version_note}" + " }")
 
     def getSystemVersion(self) -> str:
         return str(self.version)
+    
+ 
+    def getSystemAboutInfo() -> str :
+        return "Details appear here..."
 
-systemInfoObject = About(version=0.23, status='Initial Development#4',
-                         build=20221209, version_note='login page and pre-account draft implemented')
+systemInfoObject = About(version=0.32, status='Initial Development#5',
+                         build=20221210, version_note='login system meets expectation, some pre-defined accounts defined, and huge overall improvements')
 systemInfo = systemInfoObject.__str__()
 systemVersion = systemInfoObject.getSystemVersion()
 
@@ -93,4 +111,4 @@ rootView = Blueprint('rootView', __name__)
 def root_view():
     return render_template("root.html", about=systemInfo, user=current_user)
 
-# - Initial Development#4: login page and pre-account draft implemented on December 9, 2022 -> **0.23**
+# - Initial Development#5: login system meets expectation, some pre-defined accounts defined, and huge overall improvements on December 10, 2022 -> **0.32**

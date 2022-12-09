@@ -1,13 +1,23 @@
 # Database schema
-from . import db
+import datetime
+import time
+
 from flask_login import UserMixin, current_user
-import time, datetime
+
+from . import db
+
 
 class User(db.Model, UserMixin):
     """ Database table: user
-        each user account setting/properties defined here
+        each user account setting/properties defined here.
+        #Attribute:
+            fname -> first name,
+            alias -> alias (not null),
+            password -> password,
+            points -> foreign key to Game table
         """
-    fname = db.Column(db.String(56), primary_key=True) # first name
+    id = db.Column(db.Integer(), unique=True, primary_key=True)
+    fname = db.Column(db.String(56)) # first name
     alias = db.Column(db.String(20), nullable=False)
     password = db.Column(db.String())
     points = db.relationship('Game')
