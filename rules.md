@@ -2,7 +2,7 @@
 
 **Developed by Kittipich "Luke" Aiumbhornsin**
 
-**Last updated on December 9, 2022 @00:35**
+**Last updated on December 11, 2022 @02:11**
 
 - Home page/landing page are set to be login page
 - People specified below able to login with pre-defined accounts
@@ -51,7 +51,7 @@
   - for game page 1 to n is "<string:alias>/have-fun-with-my-game/play/"
   - for account management landing page is "<string:alias>/account-management/"
   - for changing account password is "<string:alias>/account-management/change-password/"
-  - for checking pre-defined accounts is "/check/" ('POST' method only)
+  - for checking pre-defined accounts is "/check-account/by-first-name/" (for independant view) and "/check/" (for integrated login view)['POST' method only]
   - for about page is "/about/"
   - for game result page is "<string:alias>/have-fun-with-my-game/<int:id>/this-is-your-performance/"
   - for adding more question is "<string:alias>/have-fun-with-my-game/add-question/"
@@ -88,4 +88,6 @@
   - footer
     - about the app
     - copyright myself
--
+- customized features notes for each one
+  - Grandme:
+    - Birthday celebration (Dec 11)

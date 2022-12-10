@@ -1,5 +1,11 @@
 {% extends 'root.html' %} {% block title %} CHECK ACCOUNT {% endblock %} {%
 block body %}
+<style>
+  .swal2-popup {
+    font-size: 1.6rem !important;
+    font-family: "Kodchasan", sans-serif;
+  }
+</style>
 
 <!-- <div
   class="text-center my-2 py-2 px-5 mx-5 border border-3 border-info rounded-top"
@@ -41,9 +47,15 @@ block body %}
     </div>
   </div>
 </div> -->
-
-<script>
-  theChecker();
-</script>
+<div class="my-5 py-5">
+  <div
+    class="text-center my-2 py-2 px-5 mx-5 border border-3 border-light rounded-top"
+    align="center"
+  >
+    <button class="btn btn-light btn-lg" type="button" onclick="theChecker()">
+      Click here if it does not automatically pop-up
+    </button>
+  </div>
+</div>
 
 {% endblock %}

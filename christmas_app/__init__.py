@@ -99,8 +99,8 @@ class About():
     def getSystemAboutInfo() -> str :
         return "Details appear here..."
 
-systemInfoObject = About(version=0.321, status='Initial Development#5.2',
-                         build=20221210, version_note='pre-defined account checker system reorganization started(with bugs wait to be fixed) and overall improvements')
+systemInfoObject = About(version=0.322, status='Initial Development#6',
+                         build=20221211, version_note='pre-defined account checker system bug fixed and overall improvements')
 systemInfo = systemInfoObject.__str__()
 systemVersion = systemInfoObject.getSystemVersion()
 
@@ -109,4 +109,4 @@ rootView = Blueprint('rootView', __name__)
 def root_view():
     return render_template("root.html", about=systemInfo, user=current_user)
 
-# - Initial Development#5.2: pre-defined account checker system reorganization started(with bugs wait to be fixed) and overall improvements on December 10, 2022 -> **0.321**
+# - I- Initial Development#6: pre-defined account checker system bug fixed and overall improvements on December 11, 2022 -> **0.322**

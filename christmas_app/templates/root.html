@@ -1,5 +1,5 @@
 <!-- This is a root template html which it will be inherited to other pages -->
-{% include 'alert.html' %}
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -25,7 +25,7 @@
     <!-- Beautiful alert from SweetAlert2 -->
     <!-- <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script> -->
     <!-- SWA Offline access -->
-    <script src="{{url_for('static', filename='offline_cdn/swa2.js')}}"></script>
+    <!-- <script src="{{url_for('static', filename='offline_cdn/swa2.js')}}"></script> -->
     <!-- Load custom App styling -->
     <link rel=stylesheet type=text/css href="{{ url_for('static',
     filename='style.css') }}">
@@ -44,7 +44,7 @@
   </head>
 
   <body onload="getLcTime();">
-    {% block root %}
+    {% include 'alert.html' %} {% block root %}
     <script type="text/javascript">
       function getLcTime() {
         let lt = new Date();
@@ -73,6 +73,12 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="/check-account/"
+                >Check</a
+              >
+            </li>
+
             {% if not user.is_authenticated %}
             <li class="nav-item">
               <a class="nav-link" aria-current="page" href="/login">Login</a>

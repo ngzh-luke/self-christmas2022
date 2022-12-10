@@ -3,6 +3,7 @@ from flask_login import login_user, login_required, logout_user, current_user
 from flask_bcrypt import check_password_hash
 from ._tools_ import flash # import improved flash method (flask)
 from .models import User
+from .features import checker # import pre-defined account checker method
 import time, json
 
 auth = Blueprint('auth', __name__)
@@ -31,6 +32,7 @@ def logIn():
         if user :
             if check_password_hash(user.password, password) : # comparing two given parameters
                 flash('Welcome, ' + name + "\nLogged in Successfully!", category='success')
+                # flash("Logged in Successfully!", category='success')
                 login_user(user, remember=True)
                 return redirect(url_for("features.cake", user_alias=current_user.alias))
                 
@@ -41,22 +43,6 @@ def logIn():
     
     return render_template('login.html',user=current_user)
 
-
-
-def checker() -> None:
-    if request.method == "POST":
-        account_ = request.form.get('account_').upper()
-        if account_ is not None:
-            user = User.query.filter_by(fname=account_).first()
-            if user is not None:
-                user_fname = user.fname
-                if user_fname == account_:
-                    flash('You may use your first name to login.', category='found')
-            
-            else:
-                flash("However, you still can enjoy the present without logged in ^_^", category='not found')
-        else:
-                flash("However, you still can enjoy the present without logged in ^_^", category='not found')
 
 
 
