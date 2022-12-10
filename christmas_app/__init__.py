@@ -24,13 +24,14 @@ def create_app():
 
     from .views import views
     from .authen import auth
-    # from .views.dashboard_admin import admin_dashboard
+    from .features import features
+    from .accountMng import account
     # from .views.dashboard_user import user_dashboard
     app.register_blueprint(rootView, url_prefix='/')
     app.register_blueprint(views, url_prefix='/')
     app.register_blueprint(auth, url_prefix='/')
-    # app.register_blueprint(admin_dashboard, url_prefix='/')
-    # app.register_blueprint(user_dashboard, url_prefix='/')
+    app.register_blueprint(features, url_prefix='/')
+    app.register_blueprint(account, url_prefix='/')
 
     with app.app_context(): # Drop all of the tables
         db.drop_all()
@@ -43,12 +44,9 @@ def create_app():
     def demo_account():
         try:
 
-            d1 = User(fname="ADMIN", alias="test1", password=generate_password_hash("admin").decode('utf-8'))
+            d1 = User(fname="ADMIN", alias="admin", password=generate_password_hash("admin").decode('utf-8'))
             
-            d2 = User(fname="USER", alias="test2", 
-            password=generate_password_hash("user").decode('utf-8'))    
-            
-            db.session.add_all([d1, d2])
+            db.session.add(d1)
             db.session.commit()
        
         except Exception as e:
@@ -101,8 +99,8 @@ class About():
     def getSystemAboutInfo() -> str :
         return "Details appear here..."
 
-systemInfoObject = About(version=0.32, status='Initial Development#5',
-                         build=20221210, version_note='login system meets expectation, some pre-defined accounts defined, and huge overall improvements')
+systemInfoObject = About(version=0.321, status='Initial Development#5.2',
+                         build=20221210, version_note='pre-defined account checker system reorganization started(with bugs wait to be fixed) and overall improvements')
 systemInfo = systemInfoObject.__str__()
 systemVersion = systemInfoObject.getSystemVersion()
 
@@ -111,4 +109,4 @@ rootView = Blueprint('rootView', __name__)
 def root_view():
     return render_template("root.html", about=systemInfo, user=current_user)
 
-# - Initial Development#5: login system meets expectation, some pre-defined accounts defined, and huge overall improvements on December 10, 2022 -> **0.32**
+# - Initial Development#5.2: pre-defined account checker system reorganization started(with bugs wait to be fixed) and overall improvements on December 10, 2022 -> **0.321**

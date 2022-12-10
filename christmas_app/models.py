@@ -10,6 +10,7 @@ from . import db
 class User(db.Model, UserMixin):
     """ Database table: user
         each user account setting/properties defined here.
+        
         #Attribute:
             fname -> first name,
             alias -> alias (not null),

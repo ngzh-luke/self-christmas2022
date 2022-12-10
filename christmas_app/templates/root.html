@@ -1,5 +1,5 @@
 <!-- This is a root template html which it will be inherited to other pages -->
-
+{% include 'alert.html' %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -86,6 +86,14 @@
                 >Cake</a
               >
             </li>
+            <li class="nav-item">
+              <a
+                class="nav-link"
+                aria-current="page"
+                href="/for/{{user.alias}}/customized-celebration-view/"
+                >Customized Celebration</a
+              >
+            </li>
             {% endif %}
             <li class="nav-item">
               <a class="nav-link" href="/joy-is-arrived">Celebration</a>
@@ -107,6 +115,13 @@
                 <li>
                   <a
                     class="dropdown-item"
+                    href="/{{user.alias}}/account-management"
+                    >My Account
+                  </a>
+                </li>
+                <li>
+                  <a
+                    class="dropdown-item"
                     href="/{{user.alias}}/account-management/change-password/"
                     >Change Account Password</a
                   >
@@ -115,14 +130,17 @@
                 <li><a class="dropdown-item" href="/logout">Logout</a></li>
               </ul>
             </li>
-            {% endif %}
           </ul>
         </div>
-        {% if user.is_authenticated %}
-        <div class="logged-in-user mx-2" style="color: green" align="center">
-          <a class="nav-link disabled">Logged in as: {{user.__str__()}}</a>
+
+        <div class="logged-in-user mx-2" align="center">
+          <span class="input-group-text mx-3" id="basic-addon1"
+            >@<a class="nav-link" href="/{{user.alias}}/account-management">
+              <span style="color: green">&ensp;{{user.__str__()}}</span></a
+            ></span
+          >
         </div>
-        <span class="input-group-text mx-3" id="basic-addon1">@</span>
+
         {% endif %}
       </div>
       <!-- show current time at id=ct -->
@@ -137,47 +155,7 @@
     </nav>
 
     <div class="mx-2 py-2 px-2"></div>
-    {% endblock %}
-    <!-- Begin alerts -->
-    {% with messages = get_flashed_messages(with_categories=true) %} {% if
-    messages %} {% for category, message in messages %}
-
-    <script>
-      let cat = "{{category}}";
-      if ("{{category}}" == "danger") {
-        cat = "error";
-      } else if ("{{category}}" == "found") {
-        cat = "success";
-      } else if ("{{category}}" == "not found") {
-        cat = "warning";
-      }
-      Swal.fire({
-        title:
-          "{{ category.title() }}!" == "found"
-            ? "FOUND!"
-            : "{{ category.title() }}!",
-        // success , error , warning ,info, found
-
-        html:
-          "{{ category }}" == "not found"
-            ? "Please try again later or use different account! <br> {{message}}"
-            : "{{ message }}",
-        // Custom message flashed from your flask routes
-
-        icon: cat,
-        // success , error , warning ,info, found
-
-        focusConfirm: true,
-        confirmButtonText: "Dismiss",
-        confirmButtonAriaLabel: "Dismiss",
-      }); //.then(() => {
-      //   window.location.assign("/");
-      // });
-    </script>
-
-    {% endfor %} {% endif %} {% endwith %}
-
-    <!-- End alerts -->
-    {% block body %} {% endblock %} {% block footer %} {% endblock %}
+    {% endblock %} {% block body %} {% endblock %} {% block footer %} {%
+    endblock %}
   </body>
 </html>

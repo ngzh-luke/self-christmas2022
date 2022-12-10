@@ -1,76 +1,100 @@
 {% extends 'root.html' %} {% block title %} LOGIN {% endblock %} {% block body
 %}
-<div class="mx-5 my-2 py-4 px-5">
-  <h2 align="center">LOGIN</h2>
+<style>
+  body {
+    background-image: url("https://cdn.pixabay.com/photo/2022/05/01/16/22/the-calendar-7167933_1280.png");
+    background-size: cover;
+    background-position-y: top + 2;
+  }
+  div.login {
+    opacity: 0.9;
+  }
+</style>
+<div class="login">
+  <div class="mx-5 my-2 py-4 px-5">
+    <h2 align="center" style="color: aqua; font-weight: bolder">LOGIN</h2>
 
-  <form
-    class="form-control form-control-lg border border-3 border-success"
-    action="/login"
-    method="POST"
-  >
-    <div class="py-2 my-2" align="center">
-      <label for="inputUsername" class="my-2">Username</label>
-      <input
-        type="text"
-        class="form-control"
-        id="inputUsername"
-        name="inputUsername"
-        placeholder="First Name"
-      />
-    </div>
-    <div class="py-2" align="center">
-      <label for="inputPassword" class="my-2">Password</label>
-      <input
-        type="password"
-        class="form-control"
-        id="inputPassword"
-        name="inputPassword"
-        placeholder="Password"
-      />
-    </div>
-    <div class="row gap-2 py-2">
-      <button type="submit" class="btn btn-lg btn-primary mb-3" align="center">
-        Confirm Identity
-      </button>
-    </div>
-
-    <div class="py-1 my-2" align="center">
-      <button
-        type="button"
-        class="btn btn-secondary mb-3"
-        onclick="checkToggle()"
-      >
-        Not sure you have pre-defined account?
-      </button>
-    </div>
-  </form>
-</div>
-<div class="px-5 my-2" id="checker" align="center">
-  <div class="col-7 row-auto">
     <form
-      class="form-control py-2 my-2 border border-3 border-info"
-      action="/check/"
+      class="form-control form-control-lg border border-3 border-success"
+      action="/login"
       method="POST"
     >
-      <h4>Check pre-defined account</h4>
-      <input
-        class="form-control me-2"
-        type="search"
-        placeholder="Search Here"
-        aria-label="Search"
-        autocapitalize="characters"
-        name="account_"
-        id="account_"
-      />
-      <div class="my-2">
-        <input type="submit" value="Search!" class="btn-lg" />
+      <div class="py-2 my-2" align="center">
+        <label for="inputUsername" class="my-2">Username</label>
+        <input
+          type="text"
+          class="form-control"
+          id="inputUsername"
+          name="inputUsername"
+          placeholder="First Name"
+        />
+        <small>Default username is your first name.</small>
+      </div>
+      <div class="py-2" align="center">
+        <label for="inputPassword" class="my-2">Password</label>
+        <input
+          type="password"
+          class="form-control"
+          id="inputPassword"
+          name="inputPassword"
+          placeholder="Password"
+        />
+        <small
+          >Default password is your birthdate in the format: YYYY-MM-DD<br />Ex.
+          DOB is Dec 01, 2000 You might type "2000-12-01"</small
+        >
+      </div>
+      <div class="row gap-2 py-2">
+        <button
+          type="submit"
+          class="btn btn-lg btn-primary mb-3"
+          align="center"
+        >
+          Confirm Identity
+        </button>
+      </div>
+
+      <div class="py-1 my-2" align="center">
+        <button
+          type="button"
+          class="btn btn-secondary mb-3"
+          onclick="checkToggle()"
+        >
+          Not sure you have pre-defined account?
+        </button>
       </div>
     </form>
   </div>
+  <div class="px-5 my-3" id="checker" align="center">
+    <div class="col-7 row-auto">
+      <form
+        class="form-control py-2 my-2 border border-3 border-info"
+        action="/check/"
+        method="POST"
+      >
+        <h4>Check pre-defined account</h4>
+        <input
+          class="form-control me-2"
+          type="search"
+          placeholder="Search Here"
+          aria-label="Search"
+          autocapitalize="characters"
+          name="account_"
+          id="account_"
+        />
+        <p>
+          Type in your first name (Ex. If your name is John Blue, type in "John"
+          or "JOHN" or "john")
+        </p>
+        <div class="my-2">
+          <input type="submit" value="Search!" class="btn-lg" />
+        </div>
+      </form>
+    </div>
 
-  *******
+    *******
+  </div>
 </div>
-
 <script>
   var state = document.getElementById("checker");
   state.style.display = "none";

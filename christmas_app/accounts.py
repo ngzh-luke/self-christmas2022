@@ -14,7 +14,7 @@ def create_dad():
 def create_mom():
     mom = None
     try:
-        mom = User(fname='SARAH',password=generate_password_hash('1979-09-07').decode('utf-8'), alias='Mom')
+        mom = User(fname='SARAH',password=generate_password_hash('1979-08-07').decode('utf-8'), alias='Mom')
     except:
         flash("Couldn't add more row to database", category='danger')
     return mom

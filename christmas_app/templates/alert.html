@@ -1,0 +1,40 @@
+<!-- Begin alerts -->
+{% with messages = get_flashed_messages(with_categories=true) %} {% if messages
+%} {% for category, message in messages %}
+
+<script>
+  let cat = "{{category}}";
+  if ("{{category}}" == "danger") {
+    cat = "error";
+  } else if ("{{category}}" == "found") {
+    cat = "success";
+  } else if ("{{category}}" == "not found") {
+    cat = "warning";
+  }
+  Swal.fire({
+    title:
+      "{{ category.title() }}!" == "found"
+        ? "FOUND!"
+        : "{{ category.title() }}!",
+    // success , error , warning ,info, found
+
+    html:
+      "{{ category }}" == "not found"
+        ? "Please try again later or use different account! <br> {{message}}"
+        : "{{ message }}",
+    // Custom message flashed from your flask routes
+
+    icon: cat,
+    // success , error , warning ,info, found
+
+    focusConfirm: true,
+    confirmButtonText: "Dismiss",
+    confirmButtonAriaLabel: "Dismiss",
+  }); //.then(() => {
+  //   window.location.assign("/");
+  // });
+</script>
+
+{% endfor %} {% endif %} {% endwith %}
+
+<!-- End alerts -->

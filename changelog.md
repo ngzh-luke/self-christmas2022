@@ -21,3 +21,5 @@ Config the System version in **init**.py
 - Initial Development#4: login page and pre-account draft implemented on December 9, 2022 -> **0.23**
 
 - Initial Development#5: login system meets expectation, some pre-defined accounts defined, and huge overall improvements on December 10, 2022 -> **0.32**
+
+- Initial Development#5.2: pre-defined account checker system reorganization started(with bugs wait to be fixed) and overall improvements on December 10, 2022 -> **0.321**
