@@ -1,5 +1,5 @@
 from flask import render_template, Blueprint, request, redirect, url_for, session, abort, flash
-from flask_login import login_user, login_required, logout_user, current_user
+from flask_login import login_user, login_required, logout_user, current_user, login_fresh
 from flask_bcrypt import check_password_hash
 # from ._tools_ import flash # import customized flash method (flask)
 from .models import User
@@ -20,7 +20,9 @@ def logOut():
 @auth.route('/login/', methods=["POST", "GET"])
 def logIn():
     try:
-        if User.get_id(current_user):
+        if (login_fresh() == False): # redirect user to login page if the session is not fresh [need more customization]
+            pass
+        elif User.get_id(current_user): # if the session is fresh and user already logged in
             # flash("logged in", category='info')
             return redirect(url_for("features.cake", user_alias=current_user.alias)) # redirect to cake page
     except:
@@ -29,10 +31,13 @@ def logIn():
         name = request.form.get('inputUsername').upper()
         password = request.form.get('inputPassword')
         user = User.query.filter_by(fname=name).first()
+        changePS_AfterLogin = request.form.get("next")
         if user :
             if check_password_hash(user.password, password) : # comparing two given parameters
-                login_user(user, remember=True)
+                login_user(user, remember=False) # remember = False cause session timeout implemented and this could override timeout session Otherwise, could be set to true
                 flash('Welcome, "' + name +'"!', category='login')
+                if changePS_AfterLogin:
+                    return redirect(url_for("acc.changePS", user_alias=current_user.alias))
                 return redirect(url_for("features.cake", user_alias=current_user.alias))
                 
             else:

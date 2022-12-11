@@ -35,7 +35,7 @@ def independantChecker():
 
 @features.route('/check-account/', methods=['GET'])
 def independantCheckerLanding():
-    return render_template('checker.html', user=current_user)       
+    return render_template('checker.html', user=current_user, auto=True)       
 
 
 @features.route("/game/")

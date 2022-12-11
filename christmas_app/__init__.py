@@ -3,8 +3,9 @@ from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.exc import PendingRollbackError
 from flask_bcrypt import Bcrypt, generate_password_hash
 from flask_login import LoginManager, current_user
-from flask import Flask, Blueprint, render_template, abort, flash
+from flask import Flask, Blueprint, render_template, abort, flash, session
 from decouple import config as en_var # import the environment var
+from datetime import timedelta
 
 db = SQLAlchemy()
 DB_NAME = "christmas_app2022_database.sqlite"
@@ -17,6 +18,9 @@ def create_app():
     app.config['DATABASE_NAME'] = DB_NAME
     app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{DB_NAME}'
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+    app.config['REMEMBER_COOKIE_SECURE'] = True
+    app.config['PERMANENT_SESSION_LIFETIME'] = timedelta(hours=1) # set session timeout (need to use with before_request() below)
+    # app.config[''] 
     app.config['TIMEZONE'] = 'Asia/Bangkok'
     
     f_bcrypt.init_app(app)
@@ -66,8 +70,18 @@ def create_app():
             db.session.rollback()
             flash(f'{e}', category='error')
 
+    # config the user session
+    @app.before_request
+    def before_request():
+        session.permanent = True
+        # session.modified = True # default set to true. Consult the lib to confirm
+
     login_manager = LoginManager()
     login_manager.login_view = 'auth.logIn'
+    login_manager.refresh_view = 'auth.logIn'
+    login_manager.login_message_category = 'info'
+    login_manager.needs_refresh_message_category = "info"
+    login_manager.needs_refresh_message = "You have to login again to confirm your identity!"
     login_manager.init_app(app)
 
     @login_manager.user_loader
@@ -100,8 +114,8 @@ class About():
     def getSystemAboutInfo() -> str :
         return "Details appear here..."
 
-systemInfoObject = About(version=0.4, status='Initial Development#6.2',
-                         build=20221211, version_note='game implementation started and overall improvements')
+systemInfoObject = About(version=0.42, status='Initial Development#7',
+                         build=20221212, version_note='session timeout implemented and ss started, login system addon feature (redirect option), and overall improvements')
 systemInfo = systemInfoObject.__str__()
 systemVersion = systemInfoObject.getSystemVersion()
 
@@ -110,4 +124,4 @@ rootView = Blueprint('rootView', __name__)
 def root_view():
     return render_template("root.html", about=systemInfo, user=current_user)
 
-# - Initial Development#6.2: game implementation started and overall improvements on December 11, 2022 -> **0.4**
+# - Initial Development#7: session timeout implemented and ss started, login system addon feature (redirect option), and overall improvements on December 12, 2022 -> **0.42**

@@ -1,11 +1,15 @@
 {% extends 'root.html' %} {% block title %} CHECK ACCOUNT {% endblock %} {%
-block body %}
+block body %} {% if auto %}
 <style>
   .swal2-popup {
     font-size: 1.6rem !important;
     font-family: "Kodchasan", sans-serif;
   }
 </style>
+<script>
+  theChecker("{{user.alias}}");
+</script>
+{% endif %}
 
 <div class="my-5 py-5">
   <div class="text-center my-2 py-2 px-5 mx-5" align="center">

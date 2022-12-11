@@ -1,13 +1,29 @@
 {% extends 'root.html' %} {% block title %} MY ACCOUNT {% endblock %} {% block
-body %}
-
+body %} {% if auto %}
+<style>
+  .swal2-popup {
+    font-size: 1.6rem !important;
+    font-family: "Kodchasan", sans-serif;
+  }
+</style>
+<script>
+  theChanger("{{user.alias}}");
+</script>
+{% endif %}
 <div
   class="text-center my-2 py-2 px-5 mx-5 border border-3 border-info rounded-top"
   align="center"
 >
   <div class="px-3 py-3" align="end">
     <h3>My Account</h3>
-    <div class="vstack" align="center"><br /></div>
+    <div class="vstack" align="center">
+      <br /><button
+        onclick="theChanger('{{user.alias}}')"
+        class="btn btn-lg btn-primary"
+      >
+        Change password
+      </button>
+    </div>
   </div>
 </div>
 

@@ -2,12 +2,12 @@
 import datetime
 import time
 
-from flask_login import UserMixin, current_user
+from flask_login import UserMixin, current_user, AnonymousUserMixin
 
 from . import db
 
 
-class User(db.Model, UserMixin):
+class User(db.Model, UserMixin, AnonymousUserMixin):
     """ Database table: user
         each user account setting/properties defined here.
         
@@ -22,6 +22,7 @@ class User(db.Model, UserMixin):
     alias = db.Column(db.String(20), nullable=False)
     password = db.Column(db.String())
     points = db.relationship('Game')
+    langPref = db.Column(db.String(2), default="EN")
 
 
     def __str__(self):
@@ -36,6 +37,15 @@ class User(db.Model, UserMixin):
             return True
         return False
 
+    # Should be implemented with cookie or session instead
+    # def setLang(self, lang:str="EN"): # "TH" || "EN"
+    #     if (lang != "EN" or lang != "TH"):
+    #         self.fname = "EN"
+    #     self.langPref = lang
+
+    # @property
+    # def getLangPref(self):
+    #     return self.langPref
 
 
 class Game(db.Model):
