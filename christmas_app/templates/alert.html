@@ -1,8 +1,9 @@
 <!-- alert ui  -->
 <!-- Beautiful alert from SweetAlert2 -->
-<!-- <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script> -->
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <!-- SWA Offline access -->
-<script src="{{url_for('static', filename='offline_cdn/swa2.js')}}"></script>
+<!-- <script src="{{url_for('static', filename='offline_cdn/swa2.js')}}"></script> -->
+
 <!-- Begin alerts -->
 {% with messages = get_flashed_messages(with_categories=true) %} {% if messages
 %} {% for category, message in messages %}
