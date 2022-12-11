@@ -26,12 +26,13 @@ def create_app():
     from .authen import auth
     from .features import features
     from .accountMng import account
-    # from .views.dashboard_user import user_dashboard
+    from .game import game
     app.register_blueprint(rootView, url_prefix='/')
     app.register_blueprint(views, url_prefix='/')
     app.register_blueprint(auth, url_prefix='/')
     app.register_blueprint(features, url_prefix='/')
     app.register_blueprint(account, url_prefix='/')
+    app.register_blueprint(game, url_prefix='/')
 
     with app.app_context(): # Drop all of the tables
         db.drop_all()
@@ -99,8 +100,8 @@ class About():
     def getSystemAboutInfo() -> str :
         return "Details appear here..."
 
-systemInfoObject = About(version=0.3221, status='Initial Development#6.1',
-                         build=20221211, version_note='minor overall improvements')
+systemInfoObject = About(version=0.4, status='Initial Development#6.2',
+                         build=20221211, version_note='game implementation started and overall improvements')
 systemInfo = systemInfoObject.__str__()
 systemVersion = systemInfoObject.getSystemVersion()
 
@@ -109,4 +110,4 @@ rootView = Blueprint('rootView', __name__)
 def root_view():
     return render_template("root.html", about=systemInfo, user=current_user)
 
-# - Initial Development#6.1: minor overall improvements on December 11, 2022 -> **0.3221**
+# - Initial Development#6.2: game implementation started and overall improvements on December 11, 2022 -> **0.4**

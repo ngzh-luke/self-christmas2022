@@ -15,7 +15,7 @@ async function theChecker(loc = "") {
     var htmlCode =
       '<form class="form" action="/check/" method="POST"> ' +
       "<h3>Check pre-defined account</h3>" +
-      '<input class="form-control" type="search" placeholder="Search Here" aria-label="Search" autocapitalize="characters" name="account_" id="account_"/><br>' +
+      '<input class="col-8 my-2" type="search" placeholder="Search Here" aria-label="Search" autocapitalize="characters" name="account_" id="account_"/><br>' +
       // '<p>(Ex. If your name is John Blue, type in "John" or "JOHN" or "john")</p>' +
       '<input type="submit" value="Search Now!" class="btn-lg" />' +
       "</form>";
@@ -23,7 +23,7 @@ async function theChecker(loc = "") {
     var htmlCode =
       '<form class="form" action="/check-account/by-first-name/" method="POST"> ' +
       "<h3>Check pre-defined account</h3>" +
-      '<input class="form-control" type="search" placeholder="Search Here" aria-label="Search" autocapitalize="characters" name="account_" id="account_"/><br>' +
+      '<input class="col-8 my-2" type="search" placeholder="Search Here" aria-label="Search" autocapitalize="characters" name="account_" id="account_"/><br>' +
       // '<p>(Ex. If your name is John Blue, type in "John" or "JOHN" or "john")</p>' +
       '<input type="submit" value="Search Now!" class="btn-lg" />' +
       "</form>";

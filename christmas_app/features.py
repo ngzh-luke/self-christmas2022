@@ -36,3 +36,13 @@ def independantChecker():
 @features.route('/check-account/', methods=['GET'])
 def independantCheckerLanding():
     return render_template('checker.html', user=current_user)       
+
+
+@features.route("/game/")
+def baseLandingForGame():
+    try:
+        if User.get_id(current_user):
+            return redirect(url_for("game.loggedUser_gameLanding", user_alias=current_user.alias)) # redirect to logged in user game
+    except:
+        pass
+    return redirect(url_for('game.guestUser_gameLanding'))

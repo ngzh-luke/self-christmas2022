@@ -47,13 +47,13 @@ class Game(db.Model):
     finish_time = db.Column(db.DateTime())
     score = db.Column(db.Integer(), nullable=False, default=0)
     counter = db.Column(db.Integer(), nullable=False, default=0)
-    played_by = db.Column(db.String(), db.ForeignKey('user.fname'), nullable=False)
+    played_by = db.Column(db.String(), db.ForeignKey('user.fname'), nullable=False, default="Guest")
 
 
     def __str__(self) -> str:
         return str("ID: " + self.id + " Finished at: " + self.finish_time)
 
-    def __init__(self, start_at:datetime.datetime, finish_at:datetime.datetime, score:int, c:int):
+    def __init__(self, start_at:datetime.datetime, finish_at:datetime.datetime, score:int):
         def increment() -> int:
             current = self.counter
             increased = current + 1

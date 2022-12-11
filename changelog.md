@@ -27,3 +27,5 @@ Config the System version in **init**.py
 - Initial Development#6: pre-defined account checker system bug fixed and overall improvements on December 11, 2022 -> **0.322**
 
 - Initial Development#6.1: minor overall improvements on December 11, 2022 -> **0.3221**
+
+- Initial Development#6.2: game implementation started and overall improvements on December 11, 2022 -> **0.4**

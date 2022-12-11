@@ -6,7 +6,7 @@ from .models import User
 def create_dad():
     dad = None
     try:
-        dad = User(fname='AARON',password=generate_password_hash('1979-09-21').decode('utf-8'), alias='Dad')
+        dad = User(fname='AARON',password=generate_password_hash('09-21').decode('utf-8'), alias='Dad')
     except:
         flash("Couldn't add more row to database", category='danger')
     return dad
@@ -14,7 +14,7 @@ def create_dad():
 def create_mom():
     mom = None
     try:
-        mom = User(fname='SARAH',password=generate_password_hash('1979-08-07').decode('utf-8'), alias='Mom')
+        mom = User(fname='SARAH',password=generate_password_hash('08-07').decode('utf-8'), alias='Mom')
     except:
         flash("Couldn't add more row to database", category='danger')
     return mom
@@ -22,7 +22,7 @@ def create_mom():
 def create_pa():
     pa = None
     try:
-        pa = User(fname='CHATCHAI',password=generate_password_hash('1970-06-28').decode('utf-8'), alias='Pa')
+        pa = User(fname='CHATCHAI',password=generate_password_hash('06-28').decode('utf-8'), alias='Pa')
     except:
         flash("Couldn't add more row to database", category='danger')
     return pa
@@ -30,7 +30,7 @@ def create_pa():
 def create_mama():
     mama = None
     try:
-        mama = User(fname='BHORNRAPEE',password=generate_password_hash('1975-08-06').decode('utf-8'), alias='Mama')
+        mama = User(fname='BHORNRAPEE',password=generate_password_hash('08-06').decode('utf-8'), alias='Mama')
     except:
         flash("Couldn't add more row to database", category='danger')
     return mama

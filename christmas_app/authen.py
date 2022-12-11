@@ -14,7 +14,7 @@ auth = Blueprint('auth', __name__)
 @login_required
 def logOut():
     logout_user()
-    flash('Logout successfully <br> Please login again to access customized surprise present!', category='success')
+    flash('Please login again to access customized surprise present!', category='logout')
     return redirect(url_for('auth.logIn'))
 
 @auth.route('/login/', methods=["POST", "GET"])
@@ -31,15 +31,14 @@ def logIn():
         user = User.query.filter_by(fname=name).first()
         if user :
             if check_password_hash(user.password, password) : # comparing two given parameters
-                flash('Welcome, ' + name + "\nLogged in Successfully!", category='success')
-                # flash("Logged in Successfully!", category='success')
                 login_user(user, remember=True)
+                flash('Welcome, "' + name +'"!', category='login')
                 return redirect(url_for("features.cake", user_alias=current_user.alias))
                 
             else:
                 flash("Password or the username is incorrect!", category= 'error')
         else:
-            flash("Username is incorrect! <br/> Feel free to check the existing accounts", category= 'error') 
+            flash("Username is incorrect! Feel free to check the existing accounts", category= 'error') 
     
     return render_template('login.html',user=current_user)
 

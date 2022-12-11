@@ -56,7 +56,7 @@
     </script>
 
     <nav
-      class="navbar navbar-expand-xl sticky-top bg-light border-bottom border-2 border-warning"
+      class="navbar navbar-expand-lg sticky-top bg-light border-bottom border-4 border-warning"
     >
       <div class="container-fluid">
         <a class="navbar-brand" href="/">Present</a>
@@ -73,10 +73,25 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-              <a class="nav-link" aria-current="page" href="/check-account/"
-                >Check</a
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
               >
+                Click Me!
+              </a>
+              <ul class="dropdown-menu">
+                <li>
+                  <a class="dropdown-item" href="/check-account/"
+                    >Check pre-defined Account</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="/game/">Game</a>
+                </li>
+              </ul>
             </li>
 
             {% if not user.is_authenticated %}
@@ -92,18 +107,32 @@
                 >Cake</a
               >
             </li>
-            <li class="nav-item">
+
+            <li class="nav-item dropdown">
               <a
-                class="nav-link"
-                aria-current="page"
-                href="/for/{{user.alias}}/customized-celebration-view/"
-                >Customized Celebration</a
+                class="nav-link dropdown-toggle"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
               >
+                Celebration
+              </a>
+              <ul class="dropdown-menu">
+                <li>
+                  <a class="dropdown-item" href="/joy-is-arrived"
+                    >General Celebration</a
+                  >
+                </li>
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="/for/{{user.alias}}/customized-celebration-view/"
+                    >Customized Celebration</a
+                  >
+                </li>
+              </ul>
             </li>
             {% endif %}
-            <li class="nav-item">
-              <a class="nav-link" href="/joy-is-arrived">Celebration</a>
-            </li>
             <li class="nav-item">
               <a class="nav-link" href="/about">About</a>
             </li>
@@ -151,7 +180,7 @@
       </div>
       <!-- show current time at id=ct -->
       <div class="show_time" style="color: rgb(233, 128, 146)">
-        <div class="mx-2 my-1" align="center">
+        <div class="mx-2" align="center">
           Current Time:
           <div class="navbar-text" style="color: grey">
             <div id="ct"></div>

@@ -8,6 +8,7 @@
 %} {% for category, message in messages %}
 
 <script>
+  let msg = "{{ message }}";
   let cat = "{{category}}";
   if ("{{category}}" == "danger") {
     cat = "error";
@@ -15,18 +16,25 @@
     cat = "success";
   } else if ("{{category}}" == "not found") {
     cat = "warning";
+  } else if ("{{category}}" == "login") {
+    cat = "success";
+    msg = "Logged in Successfully! <br>" + msg;
+  } else if ("{{category}}" == "logout") {
+    msg = "Logout successfully! <br>" + msg;
+    cat = "success";
   }
   Swal.fire({
     title:
-      "{{ category.title() }}!" == "found"
-        ? "FOUND!"
+      "{{ category.title() }}" == "Login" ||
+      "{{ category.title() }}" == "Logout"
+        ? "Success!"
         : "{{ category.title() }}!",
-    // success , error , warning ,info, found
+    // success , error , warning ,info, found, not found
 
     html:
       "{{ category }}" == "not found"
-        ? "Please try again later or use different account! <br> {{message}}"
-        : "{{ message }}",
+        ? "Please try again! <br> {{message}}"
+        : msg,
     // Custom message flashed from your flask routes
 
     icon: cat,
@@ -35,10 +43,6 @@
     focusConfirm: true,
     confirmButtonText: "Dismiss",
     confirmButtonAriaLabel: "Dismiss",
-  }).then(() => {
-    if ("{{nextLoc}}" != "") {
-      window.location.assign("{{nextLoc}}");
-    }
   });
 </script>
 
