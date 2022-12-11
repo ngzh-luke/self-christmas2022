@@ -1,3 +1,4 @@
+<!-- alert ui  -->
 <!-- Beautiful alert from SweetAlert2 -->
 <!-- <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script> -->
 <!-- SWA Offline access -->
@@ -34,11 +35,11 @@
     focusConfirm: true,
     confirmButtonText: "Dismiss",
     confirmButtonAriaLabel: "Dismiss",
-  }); //.then(() => {
-  //   window.location.assign("/");
-  // });
+  }).then(() => {
+    if ("{{nextLoc}}" != "") {
+      window.location.assign("{{nextLoc}}");
+    }
+  });
 </script>
 
 {% endfor %} {% endif %} {% endwith %}
-
-<!-- End alerts -->

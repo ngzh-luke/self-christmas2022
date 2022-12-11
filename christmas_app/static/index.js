@@ -13,19 +13,19 @@ function hit() {
 async function theChecker(loc = "") {
   if (loc == "login-integrated") {
     var htmlCode =
-      '<form class="form-control py-2 my-2 border border-3 border-info" action="/check/" method="POST"> ' +
-      "<h4>Check pre-defined account</h4>" +
-      '<input class="form-control me-2" type="search" placeholder="Search Here" aria-label="Search" autocapitalize="characters" name="account_" id="account_"/>' +
-      '<p>(Ex. If your name is John Blue, type in "John" or "JOHN" or "john")</p>' +
-      '<input type="submit" value="Search!" class="btn-lg" />' +
+      '<form class="form" action="/check/" method="POST"> ' +
+      "<h3>Check pre-defined account</h3>" +
+      '<input class="form-control" type="search" placeholder="Search Here" aria-label="Search" autocapitalize="characters" name="account_" id="account_"/><br>' +
+      // '<p>(Ex. If your name is John Blue, type in "John" or "JOHN" or "john")</p>' +
+      '<input type="submit" value="Search Now!" class="btn-lg" />' +
       "</form>";
   } else {
     var htmlCode =
-      '<form class="form-control py-2 my-2 border border-3 border-info" action="/check-account/by-first-name/" method="POST"> ' +
-      "<h4>Check pre-defined account</h4>" +
-      '<input class="form-control me-2" type="search" placeholder="Search Here" aria-label="Search" autocapitalize="characters" name="account_" id="account_"/>' +
-      '<p>(Ex. If your name is John Blue, type in "John" or "JOHN" or "john")</p>' +
-      '<input type="submit" value="Search!" class="btn-lg" />' +
+      '<form class="form" action="/check-account/by-first-name/" method="POST"> ' +
+      "<h3>Check pre-defined account</h3>" +
+      '<input class="form-control" type="search" placeholder="Search Here" aria-label="Search" autocapitalize="characters" name="account_" id="account_"/><br>' +
+      // '<p>(Ex. If your name is John Blue, type in "John" or "JOHN" or "john")</p>' +
+      '<input type="submit" value="Search Now!" class="btn-lg" />' +
       "</form>";
   }
   Swal.fire({

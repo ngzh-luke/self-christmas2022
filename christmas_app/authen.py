@@ -1,7 +1,7 @@
-from flask import render_template, Blueprint, request, redirect, url_for, session, abort
+from flask import render_template, Blueprint, request, redirect, url_for, session, abort, flash
 from flask_login import login_user, login_required, logout_user, current_user
 from flask_bcrypt import check_password_hash
-from ._tools_ import flash # import improved flash method (flask)
+# from ._tools_ import flash # import customized flash method (flask)
 from .models import User
 from .features import checker # import pre-defined account checker method
 import time, json

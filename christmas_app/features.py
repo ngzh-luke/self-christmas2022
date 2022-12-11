@@ -1,12 +1,12 @@
-from flask import Blueprint, render_template, request, redirect, url_for
+from flask import Blueprint, render_template, request, redirect, url_for,flash
 from flask_login import login_required, current_user
-from ._tools_ import flash
+# from ._tools_ import flash  # import customized flash method (flask)
 from .models import User
 
 
 features = Blueprint('features', __name__)
 
-def checker() -> None:
+def checker(nextLoc:str="") -> None:
     if request.method == "POST":
         account_ = request.form.get('account_').upper()
         if account_ is not None:
@@ -30,10 +30,9 @@ def cake(user_alias):
 
 @features.route('/check-account/by-first-name/', methods=['POST'])
 def independantChecker():
-    checker()
+    checker('/login')
     return redirect(url_for('features.independantCheckerLanding'))
 
 @features.route('/check-account/', methods=['GET'])
 def independantCheckerLanding():
-    checker()
     return render_template('checker.html', user=current_user)       
