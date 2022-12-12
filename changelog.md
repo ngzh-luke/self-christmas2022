@@ -31,3 +31,5 @@ Config the System version in **init**.py
 - Initial Development#6.2: game implementation started and overall improvements on December 11, 2022 -> **0.4**
 
 - Initial Development#7: session timeout implemented and ss started, login system addon feature (redirect option), and overall improvements on December 12, 2022 -> **0.42**
+
+- Initial Development#7.1: background animation added on December 12, 2022 -> **0.421**

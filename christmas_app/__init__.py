@@ -114,8 +114,8 @@ class About():
     def getSystemAboutInfo() -> str :
         return "Details appear here..."
 
-systemInfoObject = About(version=0.42, status='Initial Development#7',
-                         build=20221212, version_note='session timeout implemented and ss started, login system addon feature (redirect option), and overall improvements')
+systemInfoObject = About(version=0.421, status='Initial Development#7.1',
+                         build=20221212, version_note='background animation added')
 systemInfo = systemInfoObject.__str__()
 systemVersion = systemInfoObject.getSystemVersion()
 
@@ -124,4 +124,4 @@ rootView = Blueprint('rootView', __name__)
 def root_view():
     return render_template("root.html", about=systemInfo, user=current_user)
 
-# - Initial Development#7: session timeout implemented and ss started, login system addon feature (redirect option), and overall improvements on December 12, 2022 -> **0.42**
+# - Initial Development#7.1: background animation added on December 12, 2022 -> **0.421**
