@@ -5,6 +5,8 @@ from flask_bcrypt import check_password_hash
 from .models import User
 from .features import checker # import pre-defined account checker method
 import time, json
+from datetime import datetime, timezone
+from ._tools_ import updateSessionTime
 
 auth = Blueprint('auth', __name__)
 
@@ -13,6 +15,7 @@ auth = Blueprint('auth', __name__)
 @auth.route('/logout/')
 @login_required
 def logOut():
+    session.clear()
     logout_user()
     flash('Please login again to access customized surprise present!', category='logout')
     return redirect(url_for('auth.logIn'))
@@ -20,7 +23,10 @@ def logOut():
 @auth.route('/login/', methods=["POST", "GET"])
 def logIn():
     try:
-        if (login_fresh() == False): # redirect user to login page if the session is not fresh [need more customization]
+        if (login_fresh() == False): # redirect user to login page if the session is not fresh 
+            # (usually logged in and close the browser and access the page again, 
+            # user still logged in to the site however might not able to access to the page that requires fresh login) 
+            # [need more customization on reauthorization for fresh login require for more fancy work lol]
             pass
         elif User.get_id(current_user): # if the session is fresh and user already logged in
             # flash("logged in", category='info')
@@ -34,7 +40,9 @@ def logIn():
         changePS_AfterLogin = request.form.get("next")
         if user :
             if check_password_hash(user.password, password) : # comparing two given parameters
-                login_user(user, remember=False) # remember = False cause session timeout implemented and this could override timeout session Otherwise, could be set to true
+                login_user(user, remember=False) # remember = False cause session timeout implemented and this could override timeout session 
+                # Otherwise, could be set to true
+                session['loginTime'] = datetime.now(tz=timezone.utc)
                 flash('Welcome, "' + name +'"!', category='login')
                 if changePS_AfterLogin:
                     return redirect(url_for("acc.changePS", user_alias=current_user.alias))

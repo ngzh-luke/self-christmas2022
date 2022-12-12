@@ -1,13 +1,14 @@
 from flask import Blueprint, render_template, request, redirect, url_for,flash
 from flask_login import login_required, current_user, login_fresh
 from .models import Game, Question, User
-
+from ._tools_ import updateSessionTime
 
 game = Blueprint('game', __name__)
 
 
 @game.route("/game/")
 def baseLandingForGame():
+    updateSessionTime()
     if (login_fresh is not True):
         return redirect(url_for("game.loggedUser_gameLanding", user_alias=current_user.alias)) # redirect to logged in user game
     else:

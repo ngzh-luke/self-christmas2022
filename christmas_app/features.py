@@ -2,7 +2,7 @@ from flask import Blueprint, render_template, request, redirect, url_for,flash
 from flask_login import login_required, current_user
 # from ._tools_ import flash  # import customized flash method (flask)
 from .models import User
-
+from ._tools_ import updateSessionTime
 
 features = Blueprint('features', __name__)
 
@@ -25,21 +25,25 @@ def checker(nextLoc:str="") -> None:
 @features.route("/<string:user_alias>/cake/")
 @login_required
 def cake(user_alias):
+    updateSessionTime()
     return render_template('cake.html', user=current_user)
 
 
 @features.route('/check-account/by-first-name/', methods=['POST'])
 def independantChecker():
+    updateSessionTime()
     checker('/login')
     return redirect(url_for('features.independantCheckerLanding'))
 
 @features.route('/check-account/', methods=['GET'])
 def independantCheckerLanding():
+    updateSessionTime()
     return render_template('checker.html', user=current_user, auto=True)       
 
 
 @features.route("/game/")
 def baseLandingForGame():
+    updateSessionTime()
     try:
         if User.get_id(current_user):
             return redirect(url_for("game.loggedUser_gameLanding", user_alias=current_user.alias)) # redirect to logged in user game

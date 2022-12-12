@@ -4,11 +4,13 @@ from sqlalchemy.exc import PendingRollbackError
 from flask_bcrypt import Bcrypt, generate_password_hash
 from flask_login import LoginManager, current_user
 from flask import Flask, Blueprint, render_template, abort, flash, session
+from flask.sessions import SessionInterface, SessionMixin
 from decouple import config as en_var # import the environment var
-from datetime import timedelta
-
+from datetime import timedelta, datetime, timezone
+from time import strftime, strptime
 db = SQLAlchemy()
 DB_NAME = "christmas_app2022_database.sqlite"
+TIMEOUT = timedelta(hours=1)
 
 def create_app():
     app = Flask(__name__)
@@ -19,7 +21,7 @@ def create_app():
     app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{DB_NAME}'
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
     app.config['REMEMBER_COOKIE_SECURE'] = True
-    app.config['PERMANENT_SESSION_LIFETIME'] = timedelta(hours=1) # set session timeout (need to use with before_request() below)
+    app.config['PERMANENT_SESSION_LIFETIME'] = TIMEOUT # set session timeout (need to use with before_request() below)
     # app.config[''] 
     app.config['TIMEZONE'] = 'Asia/Bangkok'
     
@@ -89,6 +91,23 @@ def create_app():
         return User.query.get(int(id))
 
 
+    # @app.after_request
+    # # Virtually check the session. the system session is seperated
+    # def checkSessionTime(response): # must return a response
+    #     timeLeft = None
+    #     end = datetime.now(tz=timezone.utc)
+    #     if ("loginTime" in session and 'timeoutTime' in session):
+    #         start = session['loginTime']
+    #         timeSpent = end - start
+    #         if (session['lastActiveTime'] > start):
+    #             lastActiveTime = session['lastActiveTime']
+    #         else:
+    #             lastActiveTime = start
+    #         timeLeft = session['timeoutTime'] - lastActiveTime
+    #         session['timeLeft'] = str(timeLeft)
+    #         flash(f'You have spent {timeSpent} for current session and have {timeLeft} until the session ends', category='info')
+    #     return response
+
 
     return app
 
@@ -114,8 +133,8 @@ class About():
     def getSystemAboutInfo() -> str :
         return "Details appear here..."
 
-systemInfoObject = About(version=0.421, status='Initial Development#7.1',
-                         build=20221212, version_note='background animation added')
+systemInfoObject = About(version=0.422, status='Initial Development#7.2',
+                         build=20221212, version_note='minor improvements')
 systemInfo = systemInfoObject.__str__()
 systemVersion = systemInfoObject.getSystemVersion()
 
@@ -124,4 +143,4 @@ rootView = Blueprint('rootView', __name__)
 def root_view():
     return render_template("root.html", about=systemInfo, user=current_user)
 
-# - Initial Development#7.1: background animation added on December 12, 2022 -> **0.421**
+# - Initial Development#7.2: minor improvements on December 12, 2022 -> **0.422**
