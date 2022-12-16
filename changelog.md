@@ -37,3 +37,5 @@ Config the System version in **init**.py
 - Initial Development#7.2: minor improvements on December 12, 2022 -> **0.422**
 
 - Initial Development#8: account security check added on December 16, 2022 -> **0.45**
+
+- Initial Development#8.1: account security check enhancement, bugs fixed, and overall improvements on December 16, 2022 -> **0.452**

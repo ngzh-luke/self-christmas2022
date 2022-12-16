@@ -21,12 +21,15 @@ def securePS_redirect():
     else:
         return redirect(url_for("features.cake", user_alias=current_user.alias))
     
-@acc_security.route("/")
+@acc_security.route("/account-security-alert/")
 @login_required
 def securePS_check():
-    
-    if check_password_hash(current_user.password, usernames[current_user.fname]):
-        return render_template("warning.html", user=current_user)
+    if 'changePS_AfterLogin' in session:
+        if session['changePS_AfterLogin'] == "on":
+            return redirect(url_for("acc.changePS", user_alias=current_user.alias))
+        else:
+            if (check_password_hash(current_user.password, usernames[current_user.fname])) or (len(session['psw']) <= 7):
+                session.pop('psw', None) # clear password stored in cookie
+                return render_template("plain.html", user=current_user, title='WARNING!', msg='Your account is at risk, please consider changing your password',warn=True)
         
     return redirect(url_for('acc_security.securePS_redirect'))
-    

@@ -1,12 +1,11 @@
-from flask import Blueprint, render_template, request, redirect, url_for,flash
+from flask import Blueprint, render_template, request, redirect, url_for,flash, session
 from flask_login import login_required, current_user
-# from ._tools_ import flash  # import customized flash method (flask)
 from .models import User
 from ._tools_ import updateSessionTime
 
 features = Blueprint('features', __name__)
 
-def checker(nextLoc:str="") -> None:
+def checker() -> None:
     if request.method == "POST":
         account_ = request.form.get('account_').upper()
         if account_ is not None:
@@ -36,13 +35,18 @@ def redirector():
 @features.route('/check-account/by-first-name/', methods=['POST'])
 def independantChecker():
     updateSessionTime()
-    checker('/login')
+    checker()
+    session['independantChecker'] = 'checked'
     return redirect(url_for('features.independantCheckerLanding'))
 
 @features.route('/check-account/', methods=['GET'])
 def independantCheckerLanding():
     updateSessionTime()
-    return render_template('checker.html', user=current_user, auto=True)       
+    if 'independantChecker' in session and session['independantChecker'] == 'checked':
+        session.pop('independantChecker', None)
+        return render_template('checker.html', user=current_user, auto=False)  
+    else:
+        return render_template('checker.html', user=current_user, auto=True)       
 
 
 @features.route("/game/")

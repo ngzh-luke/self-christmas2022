@@ -8,8 +8,8 @@ self-christmas source code
 
 ### For development history please check changelog.md
 
-Current Status: **Initial Development#8**
-Current Version: **0.45**
+Current Status: **Initial Development#8.1**
+Current Version: **0.452**
 Updated: **December 16, 2022**
 
 ---
@@ -18,6 +18,9 @@ Updated: **December 16, 2022**
 
 #clone the repo
 `git clone`
+
+#if already cloned, update the local repositoy
+`git pull`
 
 #create vitual environment
 `python -m venv venv`

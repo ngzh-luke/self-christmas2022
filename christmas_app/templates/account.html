@@ -1,11 +1,12 @@
 {% extends 'root.html' %} {% block title %} MY ACCOUNT {% endblock %} {% block
-body %} {% if auto %}
+body %}
 <style>
   .swal2-popup {
     font-size: 1.6rem !important;
     font-family: "Kodchasan", sans-serif;
   }
 </style>
+{% if auto %}
 <script>
   theChanger("{{user.alias}}");
 </script>

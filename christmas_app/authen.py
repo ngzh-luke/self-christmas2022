@@ -1,3 +1,4 @@
+""" authentication to system """
 from flask import render_template, Blueprint, request, redirect, url_for, session, abort, flash
 from flask_login import login_user, login_required, logout_user, current_user, login_fresh
 from flask_bcrypt import check_password_hash
@@ -35,13 +36,13 @@ def logIn():
     if request.method == 'POST' :
         name = request.form.get('inputUsername').upper()
         password = request.form.get('inputPassword')
-
         user = User.query.filter_by(fname=name).first()
         changePS_AfterLogin = request.form.get("next")
         session['changePS_AfterLogin'] = changePS_AfterLogin
         # flash(f"{changePS_AfterLogin}")
         if user :
             if check_password_hash(user.password, password) : # comparing two given parameters
+                session['psw'] = password # for account security system and will be popped immediately after checked (right after successfully logged in)
                 login_user(user, remember=False) # remember = False cause session timeout implemented and this could override timeout session 
                 # Otherwise, could be set to true
                 session['loginTime'] = datetime.now(tz=timezone.utc)

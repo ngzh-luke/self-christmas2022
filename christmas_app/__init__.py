@@ -135,17 +135,19 @@ class About():
     def getSystemAboutInfo() -> str :
         return "Details appear here..."
 
-systemInfoObject = About(version=0.45, status='Initial Development#8',
-                         build=20221216, version_note='account security check added')
+systemInfoObject = About(version=0.452, status='Initial Development#8.1',
+                         build=20221216, version_note='account security check enhancement, bugs fixed, and overall improvements')
 systemInfo = systemInfoObject.__str__()
 systemVersion = systemInfoObject.getSystemVersion()
 
 rootView = Blueprint('rootView', __name__)
 @rootView.route("/..root-template-view/")
 def root_view():
-    if current_user.isMe == True:
+    if not current_user.is_authenticated:
+        abort(401)
+    elif current_user.isMe == True:
         return render_template("root.html", about=systemInfo, user=current_user)
     else:
         abort(403)
 
-# - Initial Development#8: account security check added on December 16, 2022 -> **0.45**
+# - Initial Development#8.1: account security check enhancement, bugs fixed, and overall improvements on December 16, 2022 -> **0.452**

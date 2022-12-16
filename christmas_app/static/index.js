@@ -28,7 +28,6 @@ async function theChecker(loc = "") {
       '<form class="form" action="/check-account/by-first-name/" method="POST"> ' +
       "<h3>Check pre-defined account</h3>" +
       '<input class="col-8 my-2" type="search" placeholder="Search Here" aria-label="Search" autocapitalize="characters" name="account_" id="account_"/><br>' +
-      // '<p>(Ex. If your name is John Blue, type in "John" or "JOHN" or "john")</p>' +
       '<input type="submit" value="Search Now!" class="btn-lg" />' +
       "</form>";
   }
@@ -50,9 +49,11 @@ async function theChanger(alias = "") {
       '<form class="form" action="/' +
       alias +
       '/account-management/change-password/" method="POST"> ' +
-      "<h3 style='color:red;' >[]</h3>" +
-      '<input class="col-8 my-2" type="password" placeholder="Current Password" aria-label="Search" autocapitalize="characters" name="account_" id="account_"/><br>' +
-      '<input type="submit" value="Confirm Changes" class="btn-lg" />' +
+      "<h4 style='color:red;' >New password should have at least 8 charecters long and must not be easily guess</h4>" +
+      '<input class="col-6 my-2" type="password" placeholder="Current Password" name="current" id="current"  /><br>' +
+      '<input class="col-6 my-2" type="password" placeholder="New Password" name="new" id="new"  /><br>' +
+      '<input class="col-6 my-2" type="password" placeholder="Confirm New Password" name="confirmNew" id="confirmNew" /> <br>' +
+      '<input type="submit" value="Confirm Changes" class="btn btn-lg btn-success" />' +
       "</form>";
   } else {
     var htmlCode =
@@ -66,5 +67,31 @@ async function theChanger(alias = "") {
     showLoaderOnConfirm: true,
 
     allowOutsideClick: () => !Swal.isLoading(),
+  });
+}
+
+// System security warning
+async function warner(msg = "") {
+  var htmlCode =
+    "<div " +
+    'class="text-center my-2 px-2 mx-2 " align="center">' +
+    "<a href='/wanna-change-password/'>" +
+    '<button class="btn btn-lg btn-success" >' +
+    "Change Now!</button></a><br />" +
+    '<a href="/cake/"> ' +
+    '<button class="btn btn-dark" >Maybe Later</button></a></div>' +
+    '<div style="font-weight: bolder; color: red">' +
+    "<h3>" +
+    msg +
+    "</h3>" +
+    "</div>";
+  Swal.fire({
+    // title: "Warning!",
+    html: htmlCode,
+    icon: "warning",
+    showCancelButton: false,
+    showConfirmButton: false,
+    allowOutsideClick: false,
+    allowEscapeKey: false,
   });
 }
