@@ -28,6 +28,10 @@ def cake(user_alias):
     updateSessionTime()
     return render_template('cake.html', user=current_user)
 
+@features.route("/cake/")
+@login_required
+def redirector():
+    return redirect(url_for('features.cake', user_alias=current_user.alias))
 
 @features.route('/check-account/by-first-name/', methods=['POST'])
 def independantChecker():

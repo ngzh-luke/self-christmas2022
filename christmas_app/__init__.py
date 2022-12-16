@@ -33,12 +33,14 @@ def create_app():
     from .features import features
     from .accountMng import account
     from .game import game
+    from ._ss_ import acc_security
     app.register_blueprint(rootView, url_prefix='/')
     app.register_blueprint(views, url_prefix='/')
     app.register_blueprint(auth, url_prefix='/')
     app.register_blueprint(features, url_prefix='/')
     app.register_blueprint(account, url_prefix='/')
     app.register_blueprint(game, url_prefix='/')
+    app.register_blueprint(acc_security, url_prefix='/@system-@security-check')
 
     with app.app_context(): # Drop all of the tables
         db.drop_all()
@@ -90,26 +92,26 @@ def create_app():
     def load_user(id):
         return User.query.get(int(id))
 
-
-    # @app.after_request
-    # # Virtually check the session. the system session is seperated
-    # def checkSessionTime(response): # must return a response
-    #     timeLeft = None
-    #     end = datetime.now(tz=timezone.utc)
-    #     if ("loginTime" in session and 'timeoutTime' in session):
-    #         start = session['loginTime']
-    #         timeSpent = end - start
-    #         if (session['lastActiveTime'] > start):
-    #             lastActiveTime = session['lastActiveTime']
-    #         else:
-    #             lastActiveTime = start
-    #         timeLeft = session['timeoutTime'] - lastActiveTime
-    #         session['timeLeft'] = str(timeLeft)
-    #         flash(f'You have spent {timeSpent} for current session and have {timeLeft} until the session ends', category='info')
-    #     return response
-
-
     return app
+""" 
+    @app.after_request
+    # Virtually check the session. the system session is seperated
+    def checkSessionTime(response): # must return a response
+        timeLeft = None
+        end = datetime.now(tz=timezone.utc)
+        if ("loginTime" in session and 'timeoutTime' in session):
+            start = session['loginTime']
+            timeSpent = end - start
+            if (session['lastActiveTime'] > start):
+                lastActiveTime = session['lastActiveTime']
+            else:
+                lastActiveTime = start
+            timeLeft = session['timeoutTime'] - lastActiveTime
+            session['timeLeft'] = str(timeLeft)
+            flash(f'You have spent {timeSpent} for current session and have {timeLeft} until the session ends', category='info')
+        return response 
+    """
+    #return app
 
 class About():
     version = float()
@@ -133,14 +135,17 @@ class About():
     def getSystemAboutInfo() -> str :
         return "Details appear here..."
 
-systemInfoObject = About(version=0.422, status='Initial Development#7.2',
-                         build=20221212, version_note='minor improvements')
+systemInfoObject = About(version=0.45, status='Initial Development#8',
+                         build=20221216, version_note='account security check added')
 systemInfo = systemInfoObject.__str__()
 systemVersion = systemInfoObject.getSystemVersion()
 
 rootView = Blueprint('rootView', __name__)
 @rootView.route("/..root-template-view/")
 def root_view():
-    return render_template("root.html", about=systemInfo, user=current_user)
+    if current_user.isMe == True:
+        return render_template("root.html", about=systemInfo, user=current_user)
+    else:
+        abort(403)
 
-# - Initial Development#7.2: minor improvements on December 12, 2022 -> **0.422**
+# - Initial Development#8: account security check added on December 16, 2022 -> **0.45**

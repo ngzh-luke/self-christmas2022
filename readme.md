@@ -8,9 +8,9 @@ self-christmas source code
 
 ### For development history please check changelog.md
 
-Current Status: **Initial Development#7.2**
-Current Version: **0.422**
-Updated: **December 12, 2022**
+Current Status: **Initial Development#8**
+Current Version: **0.45**
+Updated: **December 16, 2022**
 
 ---
 

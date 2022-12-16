@@ -11,7 +11,6 @@ from ._tools_ import updateSessionTime
 auth = Blueprint('auth', __name__)
 
 
-
 @auth.route('/logout/')
 @login_required
 def logOut():
@@ -36,17 +35,21 @@ def logIn():
     if request.method == 'POST' :
         name = request.form.get('inputUsername').upper()
         password = request.form.get('inputPassword')
+
         user = User.query.filter_by(fname=name).first()
         changePS_AfterLogin = request.form.get("next")
+        session['changePS_AfterLogin'] = changePS_AfterLogin
+        # flash(f"{changePS_AfterLogin}")
         if user :
             if check_password_hash(user.password, password) : # comparing two given parameters
                 login_user(user, remember=False) # remember = False cause session timeout implemented and this could override timeout session 
                 # Otherwise, could be set to true
                 session['loginTime'] = datetime.now(tz=timezone.utc)
                 flash('Welcome, "' + name +'"!', category='login')
-                if changePS_AfterLogin:
-                    return redirect(url_for("acc.changePS", user_alias=current_user.alias))
-                return redirect(url_for("features.cake", user_alias=current_user.alias))
+                # if changePS_AfterLogin:
+                #     return redirect(url_for("acc.changePS", user_alias=current_user.alias))
+                # return redirect(url_for("features.cake", user_alias=current_user.alias))
+                return redirect(url_for("acc_security.securePS_check", user=current_user))
                 
             else:
                 flash("Password or the username is incorrect!", category= 'error')

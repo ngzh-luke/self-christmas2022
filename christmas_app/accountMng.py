@@ -16,3 +16,7 @@ def changePS(user_alias):
     updateSessionTime()
     return render_template('account.html', user=current_user, alias=current_user.alias, auto=True)
 
+@account.route('/wanna-change-password/')
+@login_required
+def redirector():
+    return redirect(url_for('acc.changePS', user_alias=current_user.alias))
