@@ -65,8 +65,7 @@ async function theChanger(alias = "") {
     showCancelButton: true,
     showConfirmButton: false,
     showLoaderOnConfirm: true,
-
-    allowOutsideClick: () => !Swal.isLoading(),
+    allowOutsideClick: false,
   });
 }
 
@@ -93,5 +92,24 @@ async function warner(msg = "") {
     showConfirmButton: false,
     allowOutsideClick: false,
     allowEscapeKey: false,
+  });
+}
+
+// Account risk level manually check
+async function riskLevelChecker() {
+  var htmlCode =
+    '<form class="form" action="/@system-@security-check/account-risk-level-check/" method="POST"> ' +
+    "<h3>Please confirm your password in order to process</h3>" +
+    '<input class="col-8 my-2" type="password" placeholder="Password" name="confirmPassword" /><br>' +
+    '<input type="submit" value="Process" class="btn btn-lg btn-info" />' +
+    "</form>";
+  Swal.fire({
+    // title: "Warning!",
+    html: htmlCode,
+    icon: "question",
+    showCancelButton: true,
+    showConfirmButton: false,
+    allowOutsideClick: true,
+    allowEscapeKey: true,
   });
 }

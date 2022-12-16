@@ -135,8 +135,8 @@ class About():
     def getSystemAboutInfo() -> str :
         return "Details appear here..."
 
-systemInfoObject = About(version=0.452, status='Initial Development#8.1',
-                         build=20221216, version_note='account security check enhancement, bugs fixed, and overall improvements')
+systemInfoObject = About(version=0.454, status='Initial Development#9',
+                         build=20221217, version_note='updates on account security check and completed account manager')
 systemInfo = systemInfoObject.__str__()
 systemVersion = systemInfoObject.getSystemVersion()
 
@@ -150,4 +150,4 @@ def root_view():
     else:
         abort(403)
 
-# - Initial Development#8.1: account security check enhancement, bugs fixed, and overall improvements on December 16, 2022 -> **0.452**
+# - Initial Development#9: updates on account security check and completed account manager on December 17, 2022 -> **0.454**

@@ -1,5 +1,5 @@
 """ account manager """
-from flask import redirect, render_template, Blueprint, url_for, request, flash
+from flask import redirect, render_template, Blueprint, url_for, request, flash, session
 from flask_login import current_user, login_required, fresh_login_required
 from flask_bcrypt import check_password_hash, generate_password_hash
 from ._tools_ import updateSessionTime
@@ -12,7 +12,11 @@ account = Blueprint('acc', __name__)
 @fresh_login_required
 def manager(user_alias):
     updateSessionTime()
-    return render_template('account.html', user=current_user, auto=False)
+    if 'risk' in session:
+        data = session['risk']
+    else:
+        data = None
+    return render_template('account.html', user=current_user, auto=False, data=[current_user.fname, current_user.alias,data])
 
 @account.route('/<string:user_alias>/account-management/change-password/', methods=['POST','GET'])
 @fresh_login_required
@@ -37,7 +41,11 @@ def changePS(user_alias):
             return redirect(url_for("acc.manager", user_alias=current_user.alias))
         flash("Can't confirm your identity, please try again! (current password is incorrect!)", category='error')
         return redirect(url_for("acc.manager", user_alias=current_user.alias))
-    return render_template('account.html', user=current_user, alias=current_user.alias, auto=True)
+    if 'risk' in session:
+        data = session['risk']
+    else:
+        data = None
+    return render_template('account.html', user=current_user, auto=True, data=[current_user.fname, current_user.alias,data])
 
 @account.route('/wanna-change-password/')
 @login_required

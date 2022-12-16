@@ -26,16 +26,18 @@ Config the System version in **init**.py
 
 - Initial Development#6: pre-defined account checker system bug fixed and overall improvements on December 11, 2022 -> **0.322**
 
-- Initial Development#6.1: minor overall improvements on December 11, 2022 -> **0.3221**
+- Initial Development#6.2: minor overall improvements on December 11, 2022 -> **0.3221**
 
-- Initial Development#6.2: game implementation started and overall improvements on December 11, 2022 -> **0.4**
+- Initial Development#6.3: game implementation started and overall improvements on December 11, 2022 -> **0.4**
 
 - Initial Development#7: session timeout implemented and ss started, login system addon feature (redirect option), and overall improvements on December 12, 2022 -> **0.42**
 
-- Initial Development#7.1: background animation added on December 12, 2022 -> **0.421**
+- Initial Development#7.2: background animation added on December 12, 2022 -> **0.421**
 
-- Initial Development#7.2: minor improvements on December 12, 2022 -> **0.422**
+- Initial Development#7.3: minor improvements on December 12, 2022 -> **0.422**
 
 - Initial Development#8: account security check added on December 16, 2022 -> **0.45**
 
-- Initial Development#8.1: account security check enhancement, bugs fixed, and overall improvements on December 16, 2022 -> **0.452**
+- Initial Development#8.2: account security check enhancement, bugs fixed, and overall improvements on December 16, 2022 -> **0.452**
+
+- Initial Development#9: updates on account security check and completed account manager on December 17, 2022 -> **0.454**
