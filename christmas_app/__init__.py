@@ -136,8 +136,8 @@ class About():
             I hope you guys enjoy the present I have prepared for you guys this year. If you have any comments, suggestions, \
                 questions, or even some bugs report please feel free to contact me or just click the buttons of actions below.'
 
-systemInfoObject = About(version=0.455, status='Initial Development#9.2',
-                         build=20221217, version_note='about page updated and overall improvements')
+systemInfoObject = About(version=0.46, status='Initial Development#10',
+                         build=20221218, version_note='game draft and question manager implement started, and overall improvements')
 systemInfo = systemInfoObject.__str__()
 systemVersion = systemInfoObject.getSystemVersion()
 
@@ -147,8 +147,8 @@ def root_view():
     if not current_user.is_authenticated:
         abort(401) # unauthorized
     elif current_user.isMe == True:
-        return render_template("root.html", about=systemInfo, user=current_user)
+        return render_template("root.html", user=current_user)
     else:
         abort(403) # forbidden
 
-# - Initial Development#9.2: about page updated and overall improvements on December 17, 2022 -> **0.455**
+# - Initial Development#10: game draft and question manager implement started, and overall improvements on December 18, 2022 -> **0.46**

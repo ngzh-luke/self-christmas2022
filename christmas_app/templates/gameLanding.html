@@ -1,5 +1,6 @@
 {% extends 'root.html' %} {% block title %} Game Landing Page{% endblock %} {%
 block body %}
+<!-- don't forget to edit in the questionsManager.html as well -->
 <style>
   .swal2-popup {
     font-size: 1.6rem !important;
@@ -19,7 +20,13 @@ block body %}
 </style>
 
 <div class="my-5 py-5">
-  <div class="text-center my-3 py-3 px-5 mx-5" align="center"></div>
+  <div class="text-center my-3 py-3 px-5 mx-5" align="center">
+    {% if current_user.is_authenticated %} {% if current_user.isMe == True %}
+    <a href="/question-manager/">
+      <button class="btn btn-primary">Question Manager</button></a
+    >
+    {% endif %} {% endif %}
+  </div>
 </div>
 
 {% endblock %}

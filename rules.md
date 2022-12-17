@@ -2,7 +2,7 @@
 
 **Developed by Kittipich "Luke" Aiumbhornsin**
 
-**Last updated on December 11, 2022 @16:54**
+**Last updated on December 17, 2022 @23:35**
 
 - Home page/landing page are set to be login page
 - People specified below able to login with pre-defined accounts
@@ -57,7 +57,7 @@
   - for about page is "/about/"
   - for game result page is "/<string:alias>/have-fun-with-my-game/<int:id>/this-is-your-performance/"
   - for game result page (play as a guest) is "/as-a-guest/have-fun-with-my-game/<int:id>/this-is-your-performance/"
-  - for adding more question is "/<string:alias>/have-fun-with-my-game/add-question/"
+  - for questions management is "/<string:alias>/have-fun-with-my-game/questions-management/"
   - for select to see performance ('POST' method only) is "/<string:alias>/have-fun-with-my-game/performance-look-up/query-by-id/"
 - cake page contains
   - a button leads to customized features page

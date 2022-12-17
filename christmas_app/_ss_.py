@@ -35,6 +35,7 @@ def securePS_check(): # Automatically check after logged in
         
     return redirect(url_for('acc_security.securePS_redirect'))
 
+# Account security check (manually perform)
 @acc_security.route("/account-risk-level-check/", methods=["POST"])
 @login_required
 def riskLevelChecker():

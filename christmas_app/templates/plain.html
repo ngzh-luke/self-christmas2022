@@ -39,4 +39,8 @@ body %}
 <script>
   warner((msg = "{{msg}}"));
 </script>
-{% endif %} {% endblock %}
+{% endif %} {% if query %}
+<script>
+  query();
+</script>
+{% endif %} {% endblock %}{% block footer %} {% endblock %}

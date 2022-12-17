@@ -77,7 +77,7 @@ async function warner(msg = "") {
     "<a href='/wanna-change-password/'>" +
     '<button class="btn btn-lg btn-success" >' +
     "Change Now!</button></a><br />" +
-    '<a href="/cake/"> ' +
+    '<a href="/"> ' +
     '<button class="btn btn-dark" >Maybe Later</button></a></div>' +
     '<div style="font-weight: bolder; color: red">' +
     "<h3>" +
@@ -133,5 +133,25 @@ async function contactMe() {
     confirmButtonAriaLabel: "okay!",
 
     allowOutsideClick: () => !Swal.isLoading(),
+  });
+}
+
+// Question query
+async function query() {
+  var htmlCode =
+    '<form class="form" action="/Kan/have-fun-with-my-game/questions-management/query/" method="POST"> ' +
+    "<h3>What question you would like to manage</h3>" +
+    '<input class="col-5 my-2" type="number" placeholder="Question id" name="id" /><br>' +
+    '<input type="submit" value="Continue" class="btn btn-lg btn-info" /></form>' +
+    '<br> Add new? <a href="/add"> <button class="btn btn-warning" >New Question</button></a>' +
+    '<br><a href="/question-manager/"> <button class="btn btn-danger" >Cancel</button></a>';
+  Swal.fire({
+    title: "Question ID",
+    html: htmlCode,
+    icon: "question",
+    showCancelButton: false,
+    showConfirmButton: false,
+    allowOutsideClick: false,
+    allowEscapeKey: false,
   });
 }
