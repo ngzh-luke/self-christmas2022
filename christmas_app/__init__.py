@@ -131,12 +131,13 @@ class About():
     def getSystemVersion(self) -> str:
         return str(self.version)
     
- 
     def getSystemAboutInfo() -> str :
-        return "Details appear here..."
+        return 'It is meant to be the present in an occasion of Christmas 2022 and surprise for my beloved ones. \
+            I hope you guys enjoy the present I have prepared for you guys this year. If you have any comments, suggestions, \
+                questions, or even some bugs report please feel free to contact me or just click the buttons of actions below.'
 
-systemInfoObject = About(version=0.454, status='Initial Development#9',
-                         build=20221217, version_note='updates on account security check and completed account manager')
+systemInfoObject = About(version=0.455, status='Initial Development#9.2',
+                         build=20221217, version_note='about page updated and overall improvements')
 systemInfo = systemInfoObject.__str__()
 systemVersion = systemInfoObject.getSystemVersion()
 
@@ -144,10 +145,10 @@ rootView = Blueprint('rootView', __name__)
 @rootView.route("/..root-template-view/")
 def root_view():
     if not current_user.is_authenticated:
-        abort(401)
+        abort(401) # unauthorized
     elif current_user.isMe == True:
         return render_template("root.html", about=systemInfo, user=current_user)
     else:
-        abort(403)
+        abort(403) # forbidden
 
-# - Initial Development#9: updates on account security check and completed account manager on December 17, 2022 -> **0.454**
+# - Initial Development#9.2: about page updated and overall improvements on December 17, 2022 -> **0.455**

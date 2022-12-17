@@ -197,7 +197,18 @@
     </nav>
 
     <div class="mx-2 py-2 px-2"></div>
-    {% endblock %} {% block body %} {% endblock %} {% block footer %} {%
-    endblock %}
+    {% endblock %} {% block body %} {% endblock %} {% block footer %}<link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0"
+    />
+    <footer class="px-5 py-3" align="end">
+      <a href="#">
+        <button class="btn btn-sm btn-warning">
+          <span class="material-symbols-outlined"> arrow_circle_up </span
+          ><br />To top
+        </button></a
+      >
+    </footer>
+    {% endblock %}
   </body>
 </html>

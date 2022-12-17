@@ -22,7 +22,7 @@
       action="/login"
       method="POST"
     >
-      <div class="py-2 my-2" align="center">
+      <div class="py-2 my-1" align="center">
         <label for="inputUsername" class="my-2">Username</label>
         <input
           type="text"
@@ -31,7 +31,11 @@
           name="inputUsername"
           placeholder="First Name"
         />
-        <small>Default username is your first name.</small>
+        <small
+          >Default username is your first name.<br />Not sure you have a
+          pre-defined account? Please click the grey button below to
+          check!</small
+        >
       </div>
       <div class="py-2" align="center">
         <label for="inputPassword" class="my-2">Password</label>
@@ -95,7 +99,7 @@
   </div>
   <div class="px-5 my-3" id="checker" align="center"></div>
 </div>
-<script>
+<!-- <script>
   var state = document.getElementById("checker");
   state.style.display = "none";
   function checkToggle() {
@@ -106,5 +110,5 @@
     }
     // document.getElementById("checker").style.display = "block";
   }
-</script>
+</script> -->
 {% endblock %}

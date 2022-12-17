@@ -1,14 +1,84 @@
 {% extends 'root.html' %} {% block title %} ABOUT {% endblock %} {% block body
 %}
+<style>
+  body {
+    height: max-content;
+  }
+  .swal2-popup {
+    font-size: 1.6rem !important;
+    font-family: "Kodchasan", sans-serif;
+  }
+</style>
 
 <div
-  class="text-center my-2 py-2 px-5 mx-5 border border-3 border-dark rounded-top"
+  class="text-center my-3 py-3 px-5 mx-5 border border-3 border-dark rounded-top"
   align="center"
 >
   <div class="px-3 py-3" align="end">
-    <h3>About the Application</h3>
-    <div class="vstack" align="center">{{info}}<br />{{ab}}</div>
+    <h3 style="font-weight: bold">About the Application</h3>
+    <div class="vstack" align="center">
+      <div>
+        This application is called <strong>"Present2022"</strong>, developed
+        using Flask framework by <u><i>Kittipich "Luke" Aiumbhornsin.</i></u
+        ><br /><small>&copy;Kittipich Aiumbhornsin</small
+        ><br />{{info}}<br /><span style="color: aliceblue"
+          ><u>System Info:</u><br />{{ab}}</span
+        >
+      </div>
+    </div>
     {% if session['timeLeft'] %} {{session['timeLeft']}} {% endif %}
+    <div class="hstack pt-4" align="start">
+      <div class="vstack gap-2">
+        <h5><u>System Settings</u></h5>
+        <ul>
+          <li>
+            Timeout (session time after last activity): <strong>60 mins</strong>
+          </li>
+          <li>Standard Account security check: <strong>True</strong></li>
+          <li>
+            Account security check frequency:
+            <strong
+              >Right after logged in and manually perform on Account management
+              page</strong
+            >
+          </li>
+          <li>
+            Needs fresh session to perform account security related process:
+            <strong>True</strong>
+          </li>
+          <li>
+            Advanced strong password evaluation feature: <strong>False</strong>
+          </li>
+        </ul>
+      </div>
+      <div class="vstack gap-2" align="center">
+        <button class="btn btn btn-success" onclick="contactMe()">
+          Contact Me/Feedbacks/Say Thanks
+        </button>
+        <a href="mailto:kittipich.a@gmail.com" target="_blank"
+          ><button class="btn btn-lg btn-danger">
+            Bugs report (via email)
+          </button></a
+        >
+      </div>
+    </div>
+  </div>
+</div>
+<div
+  class="text-center my-4 py-3 px-5 mx-5 border border-3 border-info rounded-bottom"
+  align="center"
+>
+  <div class="px-3 py-2" align="start">
+    <h3 style="font-weight: bold">About the Developer</h3>
+    <div class="hstack gap-2">
+      <button class="btn btn btn-success col-4" onclick="contactMe()">
+        Contact Me/Feedbacks/Say Thanks
+      </button>
+      <div class="vstack gap-2" align="center">
+        I am just an ordinary guy from Bangkok, Thailand, who want to keep
+        himself busy with something benificial to either others or himself.
+      </div>
+    </div>
   </div>
 </div>
 
