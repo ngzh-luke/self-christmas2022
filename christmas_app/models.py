@@ -63,7 +63,7 @@ class Game(db.Model):
     def __str__(self) -> str:
         return str("ID: " + self.id + " Finished at: " + self.finish_time)
 
-    def __init__(self, start_at:datetime.datetime, finish_at:datetime.datetime, score:int):
+    def __init__(self, finish_at:datetime.datetime, score:int,played_by,start_at:datetime.datetime=None):
         def increment() -> int:
             current = self.counter
             increased = current + 1

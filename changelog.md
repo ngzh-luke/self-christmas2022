@@ -45,3 +45,5 @@ Config the System version in **init**.py
 - Initial Development#9.2: about page updated and overall improvements on December 17, 2022 -> **0.455**
 
 - Initial Development#10: game draft and question manager implement started, and overall improvements on December 18, 2022 -> **0.46**
+
+- Initial Development#10.2: continue working on gameplay, and overall improvements on December 18, 2022 -> **0.462**

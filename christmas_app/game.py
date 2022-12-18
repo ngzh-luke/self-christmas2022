@@ -3,6 +3,7 @@ from flask_login import login_required, current_user, login_fresh
 from .models import Game, Question, User
 from ._tools_ import updateSessionTime
 from . import db
+from datetime import datetime, timezone
 
 game = Blueprint('game', __name__)
 
@@ -36,8 +37,16 @@ def guestUserPlay():
 @game.route("/<string:user_alias>/have-fun-with-my-game/play/")
 @login_required
 def loggedUserPlay():
-    return render_template('gamePlay.html', user=current_user)
+    return render_template('gamePlay.html', user=current_user, user_alias=current_user.alias)
 
+@game.route("/play/")
+def play():
+    try:
+        if User.get_id(current_user):
+            return redirect(url_for("game.loggedUserPlay", user_alias=current_user.alias))
+    except:
+        pass
+    return redirect(url_for("game.guestUserPlay", user=current_user))
 
 def onlyMe(template_name:str='questionsManager.html', **kwargs):
     if not current_user.is_authenticated:
@@ -112,3 +121,39 @@ def questionMng_EditQ(user_alias):
         toBeEdited = question
         session['question'] = None # clear the question data
     return render_template('questionsManager.html', user=current_user, edit=True)
+
+
+
+@game.route("/have-fun-with-my-game/submit/", methods=['POST'])
+def submit():
+    wenti = []
+    corNum = int(0)
+    if request.method == 'POST':
+        wenti[0] = request.form.get("cor1")
+        wenti[1] = request.form.get("cor2")
+        wenti[2] = request.form.get("cor3")
+        wenti[3] = request.form.get("cor4")
+        wenti[4] = request.form.get("cor5")
+        wenti[5] = request.form.get("cor6")
+        wenti[6] = request.form.get("cor7")
+        wenti[7] = request.form.get("cor8")
+        wenti[8] = request.form.get("cor9")
+        wenti[9] = request.form.get("cor10")
+        for i in range(0,10):
+            if wenti[i] == 'on':
+                corNum += 1
+        if (current_user.is_authenticated):
+            
+            try:
+                pts = Game(finish_at=datetime.now(),score=corNum, played_by=current_user.fname)
+                db.session.add(pts)
+                db.session.commit()
+                flash(f"Good Job！You got {corNum} points!", category='success')
+                return redirect(url_for('game.baseLandingForGame', user=current_user))
+            except:
+                db.session.rollback()
+            
+        else:
+            flash(f"Good Job！You got {corNum} points! (Please note that guest user doesn't have score saving record)", category='success')
+            return redirect(url_for('game.baseLandingForGame', user=current_user))
+    return redirect(url_for('game.baseLandingForGame', user=current_user))
