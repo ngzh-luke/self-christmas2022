@@ -1,6 +1,9 @@
 # self-christmas2022 App
 
 self-christmas source code
+This application is called "Present2022", developed using Flask framework by Kittipich "Luke" Aiumbhornsin.
+©Kittipich Aiumbhornsin
+It is meant to be the present in an occasion of Christmas 2022 and surprise for my beloved ones. I hope you guys enjoy the present I have prepared for you guys this year. If you have any comments, suggestions, questions, or even some bugs report please feel free to contact me.
 
 ## Developer: Kittipich "Luke" Aiumbhornsin
 
@@ -19,7 +22,7 @@ Updated: **December 18, 2022**
 #clone the repo
 `git clone`
 
-#if already cloned, update the local repositoy
+#if already cloned, update the local repository
 `git pull`
 
 #create vitual environment
