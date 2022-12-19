@@ -39,7 +39,7 @@ def guestUserPlay():
 
 @game.route("/<string:user_alias>/have-fun-with-my-game/play/")
 @login_required
-def loggedUserPlay():
+def loggedUserPlay(user_alias):
     session['current'] = '/' + str(current_user.alias) + '/have-fun-with-my-game/play/'
     return render_template('gamePlay.html', user=current_user, user_alias=current_user.alias)
 
@@ -133,16 +133,16 @@ def submit():
     wenti = [1,2,3,4,5,6,7,8,9,10]
     corNum = int(0)
     if request.method == 'POST':
-        wenti[0] = request.form.get("cor1")
-        wenti[1] = request.form.get("cor2")
-        wenti[2] = request.form.get("cor3")
-        wenti[3] = request.form.get("cor4")
-        wenti[4] = request.form.get("cor5")
-        wenti[5] = request.form.get("cor6")
-        wenti[6] = request.form.get("cor7")
-        wenti[7] = request.form.get("cor8")
-        wenti[8] = request.form.get("cor9")
-        wenti[9] = request.form.get("cor10")
+        wenti[0] = request.form.get("q1")
+        wenti[1] = request.form.get("q2")
+        wenti[2] = request.form.get("q3")
+        wenti[3] = request.form.get("q4")
+        wenti[4] = request.form.get("q5")
+        wenti[5] = request.form.get("q6")
+        wenti[6] = request.form.get("q7")
+        wenti[7] = request.form.get("q8")
+        wenti[8] = request.form.get("q9")
+        wenti[9] = request.form.get("q10")
         for i in range(0,10):
             if wenti[i] == 'correct':
                 corNum += 1

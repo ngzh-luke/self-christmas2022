@@ -136,8 +136,8 @@ class About():
             I hope you guys enjoy the present I have prepared for you guys this year. If you have any comments, suggestions, \
                 questions, or even some bugs report please feel free to contact me or just click the buttons of actions below.'
 
-systemInfoObject = About(version=0.464, status='Initial Development#11',
-                         build=20221219, version_note='continue working on gameplay, multiple lang site draft implemented, and overall improvements')
+systemInfoObject = About(version=0.465, status='Initial Development#11.2',
+                         build=20221219, version_note='game processes related bugs fixed')
 systemInfo = systemInfoObject.__str__()
 systemVersion = systemInfoObject.getSystemVersion()
 
@@ -151,4 +151,4 @@ def root_view():
     else:
         abort(403) # forbidden
 
-# - Initial Development#11: continue working on gameplay, multiple lang site draft implemented, and overall improvements on December 19, 2022 -> **0.464**
+# - Initial Development#11.2: game processes related bugs fixed on December 19, 2022 -> **0.465**

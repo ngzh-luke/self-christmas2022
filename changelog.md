@@ -49,3 +49,5 @@ Config the System version in **init**.py
 - Initial Development#10.2: continue working on gameplay, and overall improvements on December 18, 2022 -> **0.462**
 
 - Initial Development#11: continue working on gameplay, multiple lang site draft implemented, and overall improvements on December 19, 2022 -> **0.464**
+
+- Initial Development#11.2: game processes related bugs fixed on December 19, 2022 -> **0.465**

@@ -66,6 +66,8 @@ class Game(db.Model):
     def __init__(self, finish_at:datetime.datetime, score:int,played_by,start_at:datetime.datetime=None):
         def increment() -> int:
             current = self.counter
+            if current == None:
+                current = 0
             increased = current + 1
             self.counter = increased
             return self.counter
@@ -73,6 +75,7 @@ class Game(db.Model):
         self.finish_time = finish_at
         self.score = score
         self.counter = increment()
+        self.played_by = played_by
 
 
 
