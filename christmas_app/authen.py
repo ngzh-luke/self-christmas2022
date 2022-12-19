@@ -18,6 +18,7 @@ def logOut():
     session.clear()
     logout_user()
     flash('Please login again to access customized surprise present!', category='logout')
+    session['current'] = '/logout'
     return redirect(url_for('auth.logIn'))
 
 @auth.route('/login/', methods=["POST", "GET"])

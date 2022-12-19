@@ -155,3 +155,25 @@ async function query() {
     allowEscapeKey: false,
   });
 }
+
+// set lang helper
+async function langHelper(lan = "") {
+  if (lan == "EN") {
+    var title = "ภาษาจะเปลี่ยนเมื่อเว็บไซต์รีโหลดโดยอัตโนมัติ";
+  } else {
+    title = "Language will be changed after automatically reloaded";
+  }
+  const Toast = Swal.mixin({
+    toast: true,
+    position: "top-end",
+    showConfirmButton: false,
+  });
+  Toast.fire({
+    title: title,
+    icon: "info",
+    showCancelButton: false,
+    showConfirmButton: false,
+    allowOutsideClick: false,
+    allowEscapeKey: false,
+  });
+}

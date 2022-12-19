@@ -19,9 +19,18 @@ block body %} {% include 'pyscript.html' %}
   }
 </style>
 
-<div class="my-5 py-5">
+<div class="my-5 py-3">
+  <div class="d-grid gap-2 mx-5 px-5">
+    <button class="btn btn-lg btn-light" onclick="play()">Play</button>
+  </div>
   <div class="text-center my-3 py-3 px-5 mx-5" align="center">
-    <a href="/play/"> <button class="btn btn-lg btn-primary">Play</button></a>
+    <div class="instruction">
+      <h4 style="font-weight: bolder; font-style: italic">
+        Game: How well you know me?
+      </h4>
+    </div>
+    <br />
+
     {% if current_user.is_authenticated %} {% if current_user.isMe == True %}
     <a href="/question-manager/">
       <button class="btn btn-primary">Question Manager</button></a
@@ -29,5 +38,9 @@ block body %} {% include 'pyscript.html' %}
     {% endif %} {% endif %}
   </div>
 </div>
-
+<script>
+  function play() {
+    window.location.assign("/play");
+  }
+</script>
 {% endblock %}

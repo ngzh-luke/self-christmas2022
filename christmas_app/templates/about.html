@@ -32,6 +32,10 @@
         <h5><u>System Settings</u></h5>
         <ul>
           <li>
+            Site Language: {% if session['LANG'] == 'EN' %}ENGLISH{% else
+            %}ไทย{% endif %} (Default = ENGLISH)
+          </li>
+          <li>
             Timeout (session time after last activity): <strong>60 mins</strong>
           </li>
           <li>Standard Account security check: <strong>True</strong></li>

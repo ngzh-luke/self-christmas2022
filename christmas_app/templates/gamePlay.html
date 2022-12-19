@@ -27,8 +27,13 @@ block body %} {% include 'pyscript.html' %}
   }
 </style>
 
-<div class="my-3 py-3">
-  <div class="text-center my-3 py-3 px-5 mx-5" align="center">
+<div class="my-2 py-2">
+  <div class="text-center my-3 py-2 px-5 mx-5" align="center">
+    <div class="py-3 px-3" align="start">
+      <a href="/game/">
+        <button class="btn btn-secondary">&eqslantless; Back</button></a
+      >
+    </div>
     <div class="question">
       <form
         class="form-control form-control-lg border border-3 border-warning"
@@ -40,40 +45,225 @@ block body %} {% include 'pyscript.html' %}
             How well you know me?
           </h2>
         </div>
+        <!-- Q1 -->
         <div class="py-2 mx-2 q1">
           <h4 align="start">Question 1</h4>
-          <div class="form-check">
-            <input
-              class="form-check-input"
-              type="checkbox"
-              name="cor1"
-              id="cor1"
-              value="b"
-            />
-            <label class="form-check-label" for="cor1"> Correct 1 </label>
-          </div>
-          <div class="form-check">
-            <input
-              class="form-check-input"
-              type="checkbox"
-              name="q1b"
-              id="q1b"
-              value="b"
-            />
-            <label class="form-check-label" for="q1b"> Q1B </label>
-          </div>
-          <div class="form-check">
-            <input
-              class="form-check-input"
-              type="checkbox"
-              name="q1c"
-              id="q1c"
-              value="c"
-            />
-            <label class="form-check-label" for="q1c"> Q1C </label>
-          </div>
+          <ul class="list-group">
+            <div class="form-check my-3">
+              <li
+                class="list-group-item list-group-item-action list-group-item-dark rounded"
+              >
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  name="cor1"
+                  id="cor1"
+                  value="correct"
+                />
+                <label class="form-check-label stretched-link" for="cor1">
+                  Correct 1
+                </label>
+              </li>
+            </div>
+            <div class="form-check my-1">
+              <li
+                class="list-group-item list-group-item-action list-group-item-dark rounded"
+              >
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  name="q1b"
+                  id="q1b"
+                  value="on"
+                />
+                <label class="form-check-label stretched-link" for="q1b">
+                  Q1B
+                </label>
+              </li>
+            </div>
+            <div class="form-check my-3">
+              <li
+                class="list-group-item list-group-item-action list-group-item-dark rounded"
+              >
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  name="q1c"
+                  id="q1c"
+                  value="on"
+                />
+                <label class="form-check-label stretched-link" for="q1c">
+                  Q1C
+                </label>
+              </li>
+            </div>
+          </ul>
         </div>
-        <div class="py-2" align="center">
+        <!-- Q2 -->
+        <div class="py-2 mx-2 q2">
+          <h4 align="start">Question 2</h4>
+          <ul class="list-group">
+            <div class="form-check my-3">
+              <li
+                class="list-group-item list-group-item-action list-group-item-dark rounded"
+              >
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  name="q2a"
+                  id="q2a"
+                  value="on"
+                />
+                <label class="form-check-label stretched-link" for="q2a">
+                  Q2A
+                </label>
+              </li>
+            </div>
+            <div class="form-check my-1">
+              <li
+                class="list-group-item list-group-item-action list-group-item-dark rounded"
+              >
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  name="cor2"
+                  id="cor2"
+                  value="correct"
+                />
+                <label class="form-check-label stretched-link" for="cor2">
+                  Correct 2
+                </label>
+              </li>
+            </div>
+            <div class="form-check my-3">
+              <li
+                class="list-group-item list-group-item-action list-group-item-dark rounded"
+              >
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  name="q2c"
+                  id="q2c"
+                  value="on"
+                />
+                <label class="form-check-label stretched-link" for="q2c">
+                  Q2C
+                </label>
+              </li>
+            </div>
+          </ul>
+        </div>
+        <!-- Q3 -->
+        <div class="py-2 mx-2 q3">
+          <h4 align="start">Question 3</h4>
+          <ul class="list-group">
+            <div class="form-check my-3">
+              <li
+                class="list-group-item list-group-item-action list-group-item-dark rounded"
+              >
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  name="q3a"
+                  id="q3a"
+                  value="on"
+                />
+                <label class="form-check-label stretched-link" for="q3a">
+                  Q3A
+                </label>
+              </li>
+            </div>
+            <div class="form-check my-1">
+              <li
+                class="list-group-item list-group-item-action list-group-item-dark rounded"
+              >
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  name="cor3"
+                  id="cor3"
+                  value="correct"
+                />
+                <label class="form-check-label stretched-link" for="cor3">
+                  Correct 3
+                </label>
+              </li>
+            </div>
+            <div class="form-check my-3">
+              <li
+                class="list-group-item list-group-item-action list-group-item-dark rounded"
+              >
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  name="q3c"
+                  id="q3c"
+                  value="on"
+                />
+                <label class="form-check-label stretched-link" for="q3c">
+                  Q3C
+                </label>
+              </li>
+            </div>
+          </ul>
+        </div>
+        <!-- Q4 -->
+        <div class="py-2 mx-2 q4">
+          <h4 align="start">Question 4</h4>
+          <ul class="list-group">
+            <div class="form-check my-3">
+              <li
+                class="list-group-item list-group-item-action list-group-item-dark rounded"
+              >
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  name="q4a"
+                  id="q4a"
+                  value="on"
+                />
+                <label class="form-check-label stretched-link" for="q4a">
+                  Q4A
+                </label>
+              </li>
+            </div>
+            <div class="form-check my-1">
+              <li
+                class="list-group-item list-group-item-action list-group-item-dark rounded"
+              >
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  name="q4b"
+                  id="q4b"
+                  value="on"
+                />
+                <label class="form-check-label stretched-link" for="q4b">
+                  Q4B
+                </label>
+              </li>
+            </div>
+            <div class="form-check my-3">
+              <li
+                class="list-group-item list-group-item-action list-group-item-dark rounded"
+              >
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  name="cor4"
+                  id="cor4"
+                  value="correct"
+                />
+                <label class="form-check-label stretched-link" for="cor4">
+                  Correct 4
+                </label>
+              </li>
+            </div>
+          </ul>
+        </div>
+        <br />
+        <!-- Submit -->
+        <div class="row py-2 px-5 mx-3" align="center">
           <button
             type="submit"
             class="btn btn-lg btn-success mb-3"
@@ -83,6 +273,11 @@ block body %} {% include 'pyscript.html' %}
           </button>
         </div>
       </form>
+      <div class="py-3 px-3" align="start">
+        <a href="/game/">
+          <button class="btn btn-secondary">&eqslantless; Back</button></a
+        >
+      </div>
     </div>
   </div>
 </div>

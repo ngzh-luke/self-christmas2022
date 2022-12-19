@@ -24,6 +24,7 @@ def checker() -> None:
 @features.route("/<string:user_alias>/cake/")
 @login_required
 def cake(user_alias):
+    session['current'] = '/' + str(current_user.alias) + '/cake/'
     updateSessionTime()
     return render_template('cake.html', user=current_user)
 
@@ -41,6 +42,7 @@ def independantChecker():
 
 @features.route('/check-account/', methods=['GET'])
 def independantCheckerLanding():
+    session['current'] = '/check-account/'
     updateSessionTime()
     if 'independantChecker' in session and session['independantChecker'] == 'checked':
         session.pop('independantChecker', None)
@@ -51,6 +53,7 @@ def independantCheckerLanding():
 
 @features.route("/game/")
 def baseLandingForGame():
+    session['current'] = '/game/'
     updateSessionTime()
     try:
         if User.get_id(current_user):

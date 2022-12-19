@@ -55,7 +55,10 @@
       class="navbar navbar-expand-lg sticky-top bg-light border-bottom border-4 border-warning"
     >
       <div class="container-fluid">
-        <a class="navbar-brand" href="/">Present</a>
+        <a class="navbar-brand" href="/"
+          >{% if session['LANG'] == "TH" %}ของขวัญ{% else %}Present{% endif
+          %}</a
+        >
         <button
           class="navbar-toggler"
           type="button"
@@ -76,23 +79,31 @@
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
               >
-                Click Me!
+                {% if session['LANG'] == "TH" %}กดผมสิ{% else %}Click Me!{%
+                endif %}
               </a>
               <ul class="dropdown-menu">
                 <li>
                   <a class="dropdown-item" href="/check-account/"
-                    >Check pre-defined Account</a
+                    >{% if session['LANG'] == "TH" %}ตรวจดูบัญชีที่มีในระบบ{%
+                    else %}Check pre-defined Account{% endif %}</a
                   >
                 </li>
                 <li>
-                  <a class="dropdown-item" href="/game/">Game</a>
+                  <a class="dropdown-item" href="/game/"
+                    >{% if session['LANG'] == "TH" %}เกม{% else %}Game{% endif
+                    %}</a
+                  >
                 </li>
               </ul>
             </li>
 
             {% if not user.is_authenticated %}
             <li class="nav-item">
-              <a class="nav-link" aria-current="page" href="/login">Login</a>
+              <a class="nav-link" aria-current="page" href="/login"
+                >{% if session['LANG'] == "TH" %}ลงชื่อเข้าใช้{% else %}Login{%
+                endif %}</a
+              >
             </li>
             {% endif %}
             <!-- <li class="nav-item">
@@ -106,7 +117,8 @@
                 class="nav-link"
                 aria-current="page"
                 href="/{{user.alias}}/cake/"
-                >Cake</a
+                >{% if session['LANG'] == "TH" %}เค้ก{% else %}Cake{% endif
+                %}</a
               >
             </li>
 
@@ -117,26 +129,32 @@
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
               >
-                Celebration
+                {% if session['LANG'] == "TH" %}ฉลอง{% else %}Celebration{%
+                endif %}
               </a>
               <ul class="dropdown-menu">
                 <li>
                   <a class="dropdown-item" href="/joy-is-arrived"
-                    >General Celebration</a
+                    >{% if session['LANG'] == "TH" %}ฉลองทั่วไป{% else %}General
+                    Celebration{% endif %}</a
                   >
                 </li>
                 <li>
                   <a
                     class="dropdown-item"
                     href="/for/{{user.alias}}/customized-celebration-view/"
-                    >Customized Celebration</a
+                    >{% if session['LANG'] == "TH" %}ฉลองแบบเพื่อคุณเท่านั้น{%
+                    else %}Customized Celebration{% endif %}</a
                   >
                 </li>
               </ul>
             </li>
             {% endif %}
             <li class="nav-item">
-              <a class="nav-link" href="/about">About</a>
+              <a class="nav-link" href="/about"
+                >{% if session['LANG'] == "TH" %}เกี่ยวกับ{% else %}About{%
+                endif %}</a
+              >
             </li>
             {% if user.is_authenticated %}
             <li class="nav-item dropdown">
@@ -146,25 +164,33 @@
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
               >
-                Account
+                {% if session['LANG'] == "TH" %}บัญชี{% else %}Account{% endif
+                %}
               </a>
               <ul class="dropdown-menu">
                 <li>
                   <a
                     class="dropdown-item"
                     href="/{{user.alias}}/account-management"
-                    >My Account
+                    >{% if session['LANG'] == "TH" %}บัญชีของฉัน{% else %}My
+                    Account{% endif %}
                   </a>
                 </li>
                 <li>
                   <a
                     class="dropdown-item"
                     href="/{{user.alias}}/account-management/change-password/"
-                    >Change Account Password</a
+                    >{% if session['LANG'] == "TH" %}เปลี่ยนรหัสผ่าน{% else
+                    %}Change Account Password{% endif %}</a
                   >
                 </li>
                 <li><hr class="dropdown-divider" /></li>
-                <li><a class="dropdown-item" href="/logout">Logout</a></li>
+                <li>
+                  <a class="dropdown-item" href="/logout"
+                    >{% if session['LANG'] == "TH" %}ลงชื่อออก{% else %}Logout{%
+                    endif %}</a
+                  >
+                </li>
               </ul>
             </li>
           </ul>
@@ -177,8 +203,19 @@
             ></span
           >
         </div>
-
         {% endif %}
+      </div>
+      <!-- Language selector -->
+      <div class="lang mx-1 px-2">
+        <form action="/set-session-lang/" method="POST">
+          <button
+            class="btn btn-outline-primary"
+            id="liveToastBtn"
+            onclick="langHelper(lan)"
+          >
+            ไทย/ENGLISH
+          </button>
+        </form>
       </div>
       <!-- show current time at id=ct -->
       <div class="show_time" style="color: rgb(233, 128, 146)">
@@ -192,7 +229,25 @@
     </nav>
 
     <div class="mx-2 py-2 px-2"></div>
-    {% endblock %} {% block body %} {% endblock %} {% block footer %}<link
+    <script>
+      var lan = "";
+    </script>
+    {% if not 'LANG' in session %}
+    <script>
+      window.location.assign("/set-session-lang/");
+    </script>
+    {% elif session['LANG'] == 'EN' %}
+    <script>
+      lan = "EN";
+    </script>
+    {% else %}
+    <script>
+      lan = "TH";
+    </script>
+    {% endif %} {% endblock %} {% block body %} {% endblock %} {% block footer
+    %}
+    <!-- Go to top button with beautiful icon -->
+    <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0"
     />

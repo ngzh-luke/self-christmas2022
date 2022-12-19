@@ -11,6 +11,7 @@ account = Blueprint('acc', __name__)
 @account.route('/<string:user_alias>/account-management/', methods=["GET"])
 @fresh_login_required
 def manager(user_alias):
+    session['current'] = '/' + str(current_user.alias) + '/account-management/'
     updateSessionTime()
     if 'risk' in session:
         data = session['risk']
@@ -21,6 +22,7 @@ def manager(user_alias):
 @account.route('/<string:user_alias>/account-management/change-password/', methods=['POST','GET'])
 @fresh_login_required
 def changePS(user_alias):
+    session['current'] = '/' + str(current_user.alias) + '/account-management/change-password/'
     updateSessionTime()
     if request.method == 'POST':
         current = request.form.get("current")

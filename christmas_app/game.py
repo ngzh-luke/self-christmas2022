@@ -19,10 +19,12 @@ def baseLandingForGame():
 @game.route('/<string:user_alias>/have-fun-with-my-game/')
 @login_required
 def loggedUser_gameLanding(user_alias):
+    session['current'] = '/' + str(current_user.alias) + '/have-fun-with-my-game/'
     return render_template('gameLanding.html', user=current_user)
 
 @game.route('/as-a-guest/have-fun-with-my-game/')
 def guestUser_gameLanding():
+    session['current'] = '/as-a-guest/have-fun-with-my-game/'
     try:
         if User.get_id(current_user):
             return redirect(url_for("game.loggedUser_gameLanding", user_alias=current_user.alias))
@@ -32,11 +34,13 @@ def guestUser_gameLanding():
 
 @game.route("/as-a-guest/have-fun-with-my-game/play/")
 def guestUserPlay():
+    session['current'] = '/as-a-guest/have-fun-with-my-game/play/'
     return render_template('gamePlay.html', user=current_user)
 
 @game.route("/<string:user_alias>/have-fun-with-my-game/play/")
 @login_required
 def loggedUserPlay():
+    session['current'] = '/' + str(current_user.alias) + '/have-fun-with-my-game/play/'
     return render_template('gamePlay.html', user=current_user, user_alias=current_user.alias)
 
 @game.route("/play/")
@@ -126,7 +130,7 @@ def questionMng_EditQ(user_alias):
 
 @game.route("/have-fun-with-my-game/submit/", methods=['POST'])
 def submit():
-    wenti = []
+    wenti = [1,2,3,4,5,6,7,8,9,10]
     corNum = int(0)
     if request.method == 'POST':
         wenti[0] = request.form.get("cor1")
@@ -140,7 +144,7 @@ def submit():
         wenti[8] = request.form.get("cor9")
         wenti[9] = request.form.get("cor10")
         for i in range(0,10):
-            if wenti[i] == 'on':
+            if wenti[i] == 'correct':
                 corNum += 1
         if (current_user.is_authenticated):
             
@@ -148,12 +152,12 @@ def submit():
                 pts = Game(finish_at=datetime.now(),score=corNum, played_by=current_user.fname)
                 db.session.add(pts)
                 db.session.commit()
-                flash(f"Good Job！You got {corNum} points!", category='success')
+                flash(f"Good Job！You got {corNum}/10 points!", category='success')
                 return redirect(url_for('game.baseLandingForGame', user=current_user))
             except:
                 db.session.rollback()
             
         else:
-            flash(f"Good Job！You got {corNum} points! (Please note that guest user doesn't have score saving record)", category='success')
+            flash(f"Good Job！You got {corNum}/10 points! (Please note that guest user doesn't have score saving record)", category='success')
             return redirect(url_for('game.baseLandingForGame', user=current_user))
     return redirect(url_for('game.baseLandingForGame', user=current_user))
