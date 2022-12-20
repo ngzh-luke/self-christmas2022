@@ -141,11 +141,11 @@ class About():
     
     def getSystemAboutInfo() -> str :
         return 'It is meant to be the present in an occasion of Christmas 2022 and surprise for my beloved ones. \
-            I hope you guys enjoy the present I have prepared for you guys this year. If you have any comments, suggestions, \
+            I hope you guys enjoy the present I have prepared for you guys this year. If you have anything to tell me, including comments, suggestions, \
                 questions, or even some bugs report please feel free to contact me or just click the buttons of actions below.'
 
-systemInfoObject = About(version=0.47, status='Initial Development#12',
-                         build=20221220, version_note='game template finished, and overall improvements')
+systemInfoObject = About(version=0.471, status='Initial Development#12.2',
+                         build=20221220, version_note='game is finished, and minors overall improvements')
 systemInfo = systemInfoObject.__str__()
 systemVersion = systemInfoObject.getSystemVersion()
 
@@ -159,4 +159,4 @@ def root_view():
     else:
         abort(403) # forbidden
 
-# - Initial Development#12: game template finished, and overall improvements on December 20, 2022 -> **0.47**
+# - Initial Development#12.2: game is finished, and minors overall improvements on December 20, 2022 -> **0.471**
