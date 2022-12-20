@@ -1,13 +1,13 @@
 # Root file of the system
 from flask_sqlalchemy import SQLAlchemy
-from sqlalchemy.exc import PendingRollbackError
+from sqlalchemy.exc import PendingRollbackError, OperationalError
 from flask_bcrypt import Bcrypt, generate_password_hash
 from flask_login import LoginManager, current_user
 from flask import Flask, Blueprint, render_template, abort, flash, session
 from flask.sessions import SessionInterface, SessionMixin
+from flask_migrate import Migrate
 from decouple import config as en_var # import the environment var
-from datetime import timedelta, datetime, timezone
-from time import strftime, strptime
+from datetime import timedelta
 db = SQLAlchemy()
 DB_NAME = "christmas_app2022_database.sqlite"
 TIMEOUT = timedelta(hours=1)
@@ -27,6 +27,7 @@ def create_app():
     
     f_bcrypt.init_app(app)
     db.init_app(app)
+    mig = Migrate(app=app,db=db)
 
     from .views import views
     from .authen import auth
@@ -42,30 +43,37 @@ def create_app():
     app.register_blueprint(game, url_prefix='/')
     app.register_blueprint(acc_security, url_prefix='/@system-@security-check')
 
-    with app.app_context(): # Drop all of the tables
-        db.drop_all()
+    # with app.app_context(): # Drop all of the tables
+    #     db.drop_all()
 
-    with app.app_context():
-        db.create_all()
+    try:
+        with app.app_context():
+            db.create_all()
+    except Exception as e:
+        db.session.rollback()
+        flash(f'{e}', category='error')
 
     from .models import User
+    
     @app.before_first_request
-    def demo_account():
+    def demo_acc():
         try:
-
             d1 = User(fname="ADMIN", alias="admin", password=generate_password_hash("admin").decode('utf-8'))
-            
             db.session.add(d1)
             db.session.commit()
-       
+    
+        except OperationalError:
+            with app.app_context():
+                db.create_all()
+
         except Exception as e:
             db.session.rollback()
             flash(f'{e}', category='error')
-
-    from .accounts import create_accounts
+        
     @app.before_first_request
     def accounters():
         try:
+            from .accounts import create_accounts
             a = create_accounts()
             db.session.add_all(a)
             db.session.commit()
@@ -136,8 +144,8 @@ class About():
             I hope you guys enjoy the present I have prepared for you guys this year. If you have any comments, suggestions, \
                 questions, or even some bugs report please feel free to contact me or just click the buttons of actions below.'
 
-systemInfoObject = About(version=0.465, status='Initial Development#11.2',
-                         build=20221219, version_note='game processes related bugs fixed')
+systemInfoObject = About(version=0.47, status='Initial Development#12',
+                         build=20221220, version_note='game template finished, and overall improvements')
 systemInfo = systemInfoObject.__str__()
 systemVersion = systemInfoObject.getSystemVersion()
 
@@ -151,4 +159,4 @@ def root_view():
     else:
         abort(403) # forbidden
 
-# - Initial Development#11.2: game processes related bugs fixed on December 19, 2022 -> **0.465**
+# - Initial Development#12: game template finished, and overall improvements on December 20, 2022 -> **0.47**

@@ -18,7 +18,7 @@ class User(db.Model, UserMixin, AnonymousUserMixin):
             points -> foreign key to Game table
         """
     id = db.Column(db.Integer(), unique=True, primary_key=True)
-    fname = db.Column(db.String(56)) # first name
+    fname = db.Column(db.String(56), unique=True) # first name
     alias = db.Column(db.String(20), nullable=False)
     password = db.Column(db.String())
     points = db.relationship('Game')
@@ -64,7 +64,7 @@ class Game(db.Model):
         return str("ID: " + self.id + " Finished at: " + self.finish_time)
 
     def __init__(self, finish_at:datetime.datetime, score:int,played_by,start_at:datetime.datetime=None):
-        def increment() -> int:
+        def increment() -> int: # increment doesn't work, need to be fixed
             current = self.counter
             if current == None:
                 current = 0

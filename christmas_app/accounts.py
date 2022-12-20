@@ -2,15 +2,15 @@
 from flask import flash
 from flask_bcrypt import generate_password_hash
 from .models import User
+from decouple import config as en_var # import the environment var
 
-
-usernames = {"AARON":"09-21","SARAH":"08-07","CHATCHAI":"06-28","BHORNRAPEE":"08-06","KITTIPICH":"superKan" \
+usernames = {en_var('name_dad'):en_var('pass_dad'),en_var('name_mom'):en_var('pass_mom'),en_var('name_pa'):en_var('pass_pa'),en_var('name_mama'):en_var('pass_mama'),en_var('name_self'):en_var('pass_self') \
     ,"ADMIN":"admin"}
 
 def create_dad():
     dad = None
     try:
-        dad = User(fname='AARON',password=generate_password_hash(usernames['AARON']).decode('utf-8'), alias='Dad')
+        dad = User(fname=en_var('name_dad'),password=generate_password_hash(usernames[en_var('name_dad')]).decode('utf-8'), alias='Dad')
     except:
         flash("Couldn't add more row to database", category='danger')
     return dad
@@ -18,7 +18,7 @@ def create_dad():
 def create_mom():
     mom = None
     try:
-        mom = User(fname='SARAH',password=generate_password_hash(usernames['SARAH']).decode('utf-8'), alias='Mom')
+        mom = User(fname=en_var('name_mom'),password=generate_password_hash(usernames[en_var('name_mom')]).decode('utf-8'), alias='Mom')
     except:
         flash("Couldn't add more row to database", category='danger')
     return mom
@@ -26,7 +26,7 @@ def create_mom():
 def create_pa():
     pa = None
     try:
-        pa = User(fname='CHATCHAI',password=generate_password_hash(usernames['CHATCHAI']).decode('utf-8'), alias='Pa')
+        pa = User(fname=en_var('name_pa'),password=generate_password_hash(usernames[en_var('name_pa')]).decode('utf-8'), alias='Pa')
     except:
         flash("Couldn't add more row to database", category='danger')
     return pa
@@ -34,7 +34,7 @@ def create_pa():
 def create_mama():
     mama = None
     try:
-        mama = User(fname='BHORNRAPEE',password=generate_password_hash(usernames['BHORNRAPEE']).decode('utf-8'), alias='Mama')
+        mama = User(fname=en_var('name_mama'),password=generate_password_hash(usernames[en_var('name_mama')]).decode('utf-8'), alias='Mama')
     except:
         flash("Couldn't add more row to database", category='danger')
     return mama
@@ -42,7 +42,7 @@ def create_mama():
 def create_me():
     me = None
     try:
-        me = User(fname='KITTIPICH',password=generate_password_hash(usernames['KITTIPICH']).decode('utf-8'), alias='Kan')
+        me = User(fname=en_var('name_self'),password=generate_password_hash(usernames[en_var('name_self')]).decode('utf-8'), alias='Kan')
     except:
         flash("Couldn't add more row to database", category='danger')
     return me
