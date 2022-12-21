@@ -17,8 +17,8 @@ It is meant to be the present in an occasion of Christmas 2022 and surprise for 
 
 ### For development history please check changelog.md
 
-Current Status: **Initial Development#13**
-Current Version: **0.48**
+Current Status: **Initial Development#13.2**
+Current Version: **0.481**
 Updated: **December 21, 2022**
 
 ---

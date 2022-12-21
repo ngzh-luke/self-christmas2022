@@ -59,3 +59,5 @@ Config the System version in **init**.py
 - Initial Development#12.3: fix typing mistake on game on December 20, 2022 -> **0.471b**
 
 - Initial Development#13: cake page done, customized view implementation starts, and overall improvements on December 21, 2022 -> **0.48**
+
+- Initial Development#13.2: more customized view function implementation, and overall improvements on December 21, 2022 -> **0.481**

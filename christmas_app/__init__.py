@@ -146,8 +146,8 @@ class About():
             I hope you guys enjoy the present I have prepared for you guys this year. If you have anything to tell me, including comments, suggestions, \
                 questions, or even some bugs report please feel free to contact me or just click the buttons of actions below.'
 
-systemInfoObject = About(version=0.48, status='Initial Development#13',
-                         build=20221221, version_note='cake page done, customized view implementation starts, and overall improvements')
+systemInfoObject = About(version=0.481, status='Initial Development#13.2',
+                         build=20221221, version_note='more customized view function implementation, and overall improvements')
 systemInfo = systemInfoObject.__str__()
 systemVersion = systemInfoObject.getSystemVersion()
 
@@ -161,4 +161,4 @@ def root_view():
     else:
         abort(403) # forbidden
 
-# - Initial Development#13: cake page done, customized view implementation starts, and overall improvements on December 21, 2022 -> **0.48**
+# - Initial Development#13.2: more customized view function implementation, and overall improvements on December 21, 2022 -> **0.481**

@@ -1,5 +1,5 @@
 """ Sever side of all views catagorized as general views """
-from flask import Blueprint, render_template, redirect, url_for, session, request
+from flask import Blueprint, render_template, redirect, url_for, session, request, abort
 from christmas_app import systemInfoObject, About
 from flask_login import current_user
 from .models import User
@@ -42,7 +42,10 @@ def setLang():
         else:
             session['LANG'] = 'EN'
     time.sleep(1.5)
-    if (session['current'] == "/logout"):
-        return redirect(url_for('auth.logIn'))
+    if 'current' in session:
+        if (session['current'] == "/logout"):
+            return redirect(url_for('auth.logIn'))
+        else:
+            return redirect(session['current'])
     else:
-        return redirect(session['current'])
+        abort(500)
