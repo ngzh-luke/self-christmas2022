@@ -13,6 +13,8 @@ It is meant to be the present in an occasion of Christmas 2022 and surprise for 
 
 ## Development Status: **Developing**
 
+## For license information please check license.md
+
 ### For development history please check changelog.md
 
 Current Status: **Initial Development#13**
