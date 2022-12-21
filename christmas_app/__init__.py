@@ -35,6 +35,7 @@ def create_app():
     from .accountMng import account
     from .game import game
     from ._ss_ import acc_security
+    from .customizedView import cusViews
     app.register_blueprint(rootView, url_prefix='/')
     app.register_blueprint(views, url_prefix='/')
     app.register_blueprint(auth, url_prefix='/')
@@ -42,6 +43,7 @@ def create_app():
     app.register_blueprint(account, url_prefix='/')
     app.register_blueprint(game, url_prefix='/')
     app.register_blueprint(acc_security, url_prefix='/@system-@security-check')
+    app.register_blueprint(cusViews, url_prefix='/')
 
     # with app.app_context(): # Drop all of the tables
     #     db.drop_all()
@@ -144,8 +146,8 @@ class About():
             I hope you guys enjoy the present I have prepared for you guys this year. If you have anything to tell me, including comments, suggestions, \
                 questions, or even some bugs report please feel free to contact me or just click the buttons of actions below.'
 
-systemInfoObject = About(version=0.471, status='Initial Development#12.2',
-                         build=20221220, version_note='game is finished, and minors overall improvements')
+systemInfoObject = About(version=0.48, status='Initial Development#13',
+                         build=20221221, version_note='cake page done, customized view implementation starts, and overall improvements')
 systemInfo = systemInfoObject.__str__()
 systemVersion = systemInfoObject.getSystemVersion()
 
@@ -159,4 +161,4 @@ def root_view():
     else:
         abort(403) # forbidden
 
-# - Initial Development#12.2: game is finished, and minors overall improvements on December 20, 2022 -> **0.471**
+# - Initial Development#13: cake page done, customized view implementation starts, and overall improvements on December 21, 2022 -> **0.48**

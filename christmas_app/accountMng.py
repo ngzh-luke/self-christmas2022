@@ -53,3 +53,8 @@ def changePS(user_alias):
 @login_required
 def redirector():
     return redirect(url_for('acc.changePS', user_alias=current_user.alias))
+
+@account.route('/my-account/')
+@login_required
+def redirector_mng():
+    return redirect(url_for('acc.manager', user_alias=current_user.alias))
