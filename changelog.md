@@ -61,3 +61,7 @@ Config the System version in **init**.py
 - Initial Development#13: cake page done, customized view implementation starts, and overall improvements on December 21, 2022 -> **0.48**
 
 - Initial Development#13.2: more customized view function implementation, and overall improvements on December 21, 2022 -> **0.481**
+
+### > Notes
+- [ ] Add game history look up on game page
+- [ ] Add game answer sheet
