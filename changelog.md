@@ -62,6 +62,9 @@ Config the System version in **init**.py
 
 - Initial Development#13.2: more customized view function implementation, and overall improvements on December 21, 2022 -> **0.481**
 
+- Initial Development#13.3: answer key added on December 21, 2022 -> **0.482**
+
 ### > Notes
+
 - [ ] Add game history look up on game page
-- [ ] Add game answer sheet
+- [x] Add game answer sheet (partially done; reasons not yet given)

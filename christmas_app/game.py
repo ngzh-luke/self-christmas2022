@@ -127,6 +127,10 @@ def questionMng_EditQ(user_alias):
     return render_template('questionsManager.html', user=current_user, edit=True)
 
 
+@game.route("/have-fun-with-my-game/answer-key/")
+def answerKey():
+    flash("Attention! Please complete the game before see the answer key", category='warning')
+    return render_template("answerKey.html", user=current_user)
 
 @game.route("/have-fun-with-my-game/submit/", methods=['POST'])
 def submit():
