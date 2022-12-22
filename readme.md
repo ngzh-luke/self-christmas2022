@@ -11,7 +11,7 @@ It is meant to be the present in an occasion of Christmas 2022 and surprise for 
 
 ## Developer: Kittipich "Luke" Aiumbhornsin
 
-## Development Status: **Developing**
+## Development Status: ~~**Developing**~~ Suspended until Dec 27, 2022
 
 For license information please check **license.md**
 
