@@ -64,7 +64,15 @@ Config the System version in **init**.py
 
 - Initial Development#13.3: answer key added on December 21, 2022 -> **0.482**
 
+- Development process **suspended until December 27, 2022** | Expected to publish version **0.49 by December 28, 2022.**
+
 ### > Notes
 
 - [ ] Add game history look up on game page
 - [x] Add game answer sheet (partially done; reasons not yet given)
+- [ ] re-implement cake page for each person (might create new file and extends the base cake for each one)
+- https://www.w3schools.com/howto/howto_css_parallax.asp
+- https://www.w3schools.com/howto/howto_css_responsive_iframes.asp
+- https://www.w3schools.com/howto/howto_css_glowing_text.asp
+- https://www.w3schools.com/howto/tryhow_css_parallax_demo.htm
+- https://youtu.be/ca-Vj6kwK7M
