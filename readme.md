@@ -17,9 +17,9 @@ For license information please check **license.md**
 
 ## For development history please check **changelog.md**
 
-Current Status: **Initial Development#13.3**
-Current Version: **0.482**
-Updated: **December 21, 2022**
+Current Status: **Initial Development#14**
+Current Version: **0.5**
+Updated: **December 30, 2022**
 
 ---
 

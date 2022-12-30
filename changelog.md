@@ -66,6 +66,8 @@ Config the System version in **init**.py
 
 - Development process **suspended until December 27, 2022** | Expected to publish version **0.49 by December 28, 2022.**
 
+- Initial Development#14: all pre-defined accounts added on December 30, 2022 -> **0.5**
+
 ### > Notes
 
 - [ ] Add game history look up on game page

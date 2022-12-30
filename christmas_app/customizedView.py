@@ -132,3 +132,88 @@ def ajjade():
         except:
             return redirect(url_for('cViews.redirector'))
     return render_template("ajTrithep_ajJade.html", user=current_user)
+
+@cusViews.route("/for/Papa/customized-celebration-view/") # papa
+def papa():
+    session['current'] = '/customized-view/'
+    if current_user.alias != 'Papa':
+        alias = current_user.alias
+        alias = alias.lower()
+        try:
+            return redirect(url_for("cViews."+alias))
+        except:
+            return redirect(url_for('cViews.redirector'))
+    return render_template("grandma_papa.html", user=current_user)
+
+@cusViews.route("/for/Grandma/customized-celebration-view/") # grandma
+def grandma():
+    session['current'] = '/customized-view/'
+    if current_user.alias != 'Grandma':
+        alias = current_user.alias
+        alias = alias.lower()
+        try:
+            return redirect(url_for("cViews."+alias))
+        except:
+            return redirect(url_for('cViews.redirector'))
+    return render_template("grandma_papa.html", user=current_user)
+
+
+@cusViews.route("/for/Kwan/customized-celebration-view/") # kwan
+def kwan():
+    session['current'] = '/customized-view/'
+    if current_user.alias != 'Kwan':
+        alias = current_user.alias
+        alias = alias.lower()
+        try:
+            return redirect(url_for("cViews."+alias))
+        except:
+            return redirect(url_for('cViews.redirector'))
+    return render_template("kwan.html", user=current_user)
+
+@cusViews.route("/for/Wish/customized-celebration-view/") # wish
+def wish():
+    session['current'] = '/customized-view/'
+    if current_user.alias != 'Wish':
+        alias = current_user.alias
+        alias = alias.lower()
+        try:
+            return redirect(url_for("cViews."+alias))
+        except:
+            return redirect(url_for('cViews.redirector'))
+    return render_template("wish.html", user=current_user)
+
+@cusViews.route("/for/Noemi/customized-celebration-view/") # noemi
+def noemi():
+    session['current'] = '/customized-view/'
+    if current_user.alias != 'Noemi':
+        alias = current_user.alias
+        alias = alias.lower()
+        try:
+            return redirect(url_for("cViews."+alias))
+        except:
+            return redirect(url_for('cViews.redirector'))
+    return render_template("noemi.html", user=current_user)
+
+@cusViews.route("/for/Anna/customized-celebration-view/") # anna
+def anna():
+    session['current'] = '/customized-view/'
+    if current_user.alias != 'Anna':
+        alias = current_user.alias
+        alias = alias.lower()
+        try:
+            return redirect(url_for("cViews."+alias))
+        except:
+            return redirect(url_for('cViews.redirector'))
+    return render_template("anna.html", user=current_user)
+
+@cusViews.route("/for/Candice/customized-celebration-view/") # candice
+def candice():
+    session['current'] = '/customized-view/'
+    if current_user.alias != 'Candice':
+        alias = current_user.alias
+        alias = alias.lower()
+        try:
+            return redirect(url_for("cViews."+alias))
+        except:
+            return redirect(url_for('cViews.redirector'))
+    return render_template("candice.html", user=current_user)

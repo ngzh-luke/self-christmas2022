@@ -2,11 +2,11 @@
 
 **Developed by Kittipich "Luke" Aiumbhornsin**
 
-**Last updated on December 17, 2022 @23:35**
+**Last updated on December 30, 2022 @21:30**
 
 - Home page/landing page are set to be login page
 - People specified below able to login with pre-defined accounts
-  - Pa & Ma
+  - Pa & Mama
   - Dad & Mom
   - Papa & Grandma
   - Kwan & Wish
