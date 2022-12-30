@@ -121,6 +121,7 @@
                 %}</a
               >
             </li>
+            {% endif %}
 
             <li class="nav-item dropdown">
               <a
@@ -139,6 +140,7 @@
                     Celebration{% endif %}</a
                   >
                 </li>
+                {% if user.is_authenticated %}
                 <li>
                   <a
                     class="dropdown-item"
@@ -147,9 +149,9 @@
                     else %}Customized Celebration{% endif %}</a
                   >
                 </li>
+                {% endif %}
               </ul>
             </li>
-            {% endif %}
             <li class="nav-item">
               <a class="nav-link" href="/about"
                 >{% if session['LANG'] == "TH" %}เกี่ยวกับ{% else %}About{%

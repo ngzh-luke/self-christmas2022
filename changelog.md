@@ -70,9 +70,11 @@ Config the System version in **init**.py
 
 - Initial Development#14.2: pre-defined accounts bugs fixed, and game records show board added on December 30, 2022 -> **0.52**
 
+- Initial Development#15: general celebration added and customized view implementation starts, and overall improvement on December 31, 2022 -> **0.6**
+
 ### > Notes
 
-- [ ] Add game history look up on game page
+- [x] Add game history look up on game page
 - [x] Add game answer sheet (partially done; reasons not yet given)
 - [ ] re-implement cake page for each person (might create new file and extends the base cake for each one)
 - https://www.w3schools.com/howto/howto_css_parallax.asp

@@ -1,2 +1,33 @@
 {% extends 'root.html' %} {% block title %} {{title}} {% endblock %} {% block
-body %}{% endblock %}
+body %}
+
+<div class="mx-2 px-2 py-2 my-2" id="jingle_bells">
+  <div class="align-self-center">
+    <label for="jingle-bells" style="color: aqua">Song: Jingle Bells</label>
+  </div>
+  <iframe
+    name="jingle-bells"
+    src="https://www.youtube.com/embed/Izyf8uRf0YU"
+    title="Jingle bells, Jingle bells, Jingle all the way! (christmas song for kids with lyrics)"
+    frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    allowfullscreen
+  ></iframe>
+</div>
+
+<div class="mx-2 px-2 py-2 my-2" id="santa_claus_is_coming_to_town">
+  <div class="align-self-center">
+    <label for="Santa-Claus-Is-Coming-To-Town" style="color: aqua"
+      >Song: Santa Claus Is Coming To Town</label
+    >
+  </div>
+  <iframe
+    name="Santa-Claus-Is-Coming-To-Town"
+    src="https://www.youtube.com/embed/x9LYRyDj3po"
+    title="Santa Claus Is Coming To Town With Lyrics | Popular Christmas Carols For The Tiny Tots"
+    frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    allowfullscreen
+  ></iframe>
+</div>
+{% endblock %}

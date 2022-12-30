@@ -41,7 +41,7 @@ def dad():
             return redirect(url_for("cViews."+alias))
         except:
             return redirect(url_for('cViews.redirector'))
-    return render_template("dad.html", user=current_user)
+    return render_template("dad.html", user=current_user, title='just for Dad ^_^')
 
 @cusViews.route("/for/Mom/customized-celebration-view/") # mom
 @login_required

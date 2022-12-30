@@ -17,9 +17,9 @@ For license information please check **license.md**
 
 ## For development history please check **changelog.md**
 
-Current Status: **Initial Development#14.2**
-Current Version: **0.52**
-Updated: **December 30, 2022**
+Current Status: **Initial Development#15**
+Current Version: **0.6**
+Updated: **December 31, 2022**
 
 ---
 
@@ -42,5 +42,7 @@ Updated: **December 30, 2022**
 
 #run!
 `python main.py`
+
+#demo account! `username: "admin" password: "admin"`
 
 ---
