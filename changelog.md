@@ -68,6 +68,8 @@ Config the System version in **init**.py
 
 - Initial Development#14: all pre-defined accounts added on December 30, 2022 -> **0.5**
 
+- Initial Development#14.2: pre-defined accounts bugs fixed, and game records show board added on December 30, 2022 -> **0.52**
+
 ### > Notes
 
 - [ ] Add game history look up on game page

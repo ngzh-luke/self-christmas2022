@@ -19,7 +19,7 @@ block body %} {% include 'pyscript.html' %}
   }
 </style>
 
-<div class="my-5 py-3">
+<div class="my-5 py-2">
   <div class="d-grid gap-2 mx-5 px-5">
     <button class="btn btn-lg btn-light" onclick="play()">Play</button>
   </div>
@@ -53,6 +53,46 @@ block body %} {% include 'pyscript.html' %}
       <button class="btn btn-primary">Question Manager</button></a
     >
     {% endif %} {% endif %}
+  </div>
+</div>
+
+<div class="text-center" align="center">
+  <div class="px-3">
+    <div class="row-1" align="center">
+      <div class="col-8 gap-3">
+        {% if user.is_authenticated %}
+        <div class="mx-3 py-3 my-3 border border-primary border-2 rounded">
+          <h3>Personal Records</h3>
+          <ul class="list-group list-group-flush" id="personal_records">
+            {% for game in user.points %}
+            <li
+              class="list-group-item list-group-item-action list-group-item-danger"
+            >
+              Game ID: {{ game.id }} | {{game.played_by}} got:
+              <span style="color: #3a44db; font-size: larger; font-weight: bold"
+                >{{ game.score }} Points</span
+              >
+            </li>
+            {% endfor %}
+          </ul>
+        </div>
+        {% endif %}
+
+        <div class="mx-3 py-3 my-5 border border-2 rounded border-warning">
+          <h3>Global Records</h3>
+          <ul class="list-group list-group-flush" id="points">
+            {% for g in game %}
+            <li class="list-group-item list-group-item-action">
+              Game ID: {{ g.id }} | {{g.played_by}} got:
+              <span style="color: #3a44db; font-size: larger; font-weight: bold"
+                >{{ g.score }} Points</span
+              >
+            </li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 <script>

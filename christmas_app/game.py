@@ -20,7 +20,7 @@ def baseLandingForGame():
 @login_required
 def loggedUser_gameLanding(user_alias):
     session['current'] = '/' + str(current_user.alias) + '/have-fun-with-my-game/'
-    return render_template('gameLanding.html', user=current_user)
+    return render_template('gameLanding.html', user=current_user,game=Game.query.all())
 
 @game.route('/as-a-guest/have-fun-with-my-game/')
 def guestUser_gameLanding():
@@ -30,7 +30,7 @@ def guestUser_gameLanding():
             return redirect(url_for("game.loggedUser_gameLanding", user_alias=current_user.alias))
     except:
         pass
-    return render_template('gameLanding.html', user=current_user)
+    return render_template('gameLanding.html', user=current_user, game=Game.query.all())
 
 @game.route("/as-a-guest/have-fun-with-my-game/play/")
 def guestUserPlay():

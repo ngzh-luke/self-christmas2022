@@ -146,8 +146,8 @@ class About():
             I hope you guys enjoy the present I have prepared for you guys this year. If you have anything to tell me, including comments, suggestions, \
                 questions, or even some bugs report please feel free to contact me or just click the buttons of actions below.'
 
-systemInfoObject = About(version=0.5, status='Initial Development#14',
-                         build=20221230, version_note='all pre-defined accounts added')
+systemInfoObject = About(version=0.52, status='Initial Development#14.2',
+                         build=20221230, version_note='pre-defined accounts bugs fixed, and game records show board added')
 systemInfo = systemInfoObject.__str__()
 systemVersion = systemInfoObject.getSystemVersion()
 
@@ -161,4 +161,4 @@ def root_view():
     else:
         abort(403) # forbidden
 
-# - Initial Development#14: all pre-defined accounts added on December 30, 2022 -> **0.5**
+# - Initial Development#14.2: pre-defined accounts bugs fixed, and game records show board added on December 30, 2022 -> **0.52**
