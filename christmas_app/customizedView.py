@@ -68,7 +68,7 @@ def pa():
             return redirect(url_for("cViews."+alias))
         except:
             return redirect(url_for('cViews.redirector'))
-    return render_template("pa.html", user=current_user)
+    return render_template("pa.html", user=current_user,title='just for Pa ^_^')
 
 @cusViews.route("/for/Mama/customized-celebration-view/") # mama
 @login_required
@@ -81,7 +81,7 @@ def mama():
             return redirect(url_for("cViews."+alias))
         except:
             return redirect(url_for('cViews.redirector'))
-    return render_template("ma.html", user=current_user)
+    return render_template("ma.html", user=current_user,title='just for Mama ^_^')
 
 @cusViews.route("/for/Addy/customized-celebration-view/") # addy
 @login_required
@@ -94,7 +94,7 @@ def addy():
             return redirect(url_for("cViews."+alias))
         except:
             return redirect(url_for('cViews.redirector'))
-    return render_template("addy.html", user=current_user)
+    return render_template("addy.html", user=current_user,title='just for Addy ^_^',msg_addy=msg_addy)
 
 @cusViews.route("/for/Evander/customized-celebration-view/") # evander
 @login_required
@@ -107,7 +107,7 @@ def evander():
             return redirect(url_for("cViews."+alias))
         except:
             return redirect(url_for('cViews.redirector'))
-    return render_template("evander.html", user=current_user)
+    return render_template("evander.html", user=current_user,title='just for Evander ^_^',msg_evander=msg_evander)
 
 @cusViews.route("/for/AjTrithep/customized-celebration-view/") # aj.trithep 
 @login_required

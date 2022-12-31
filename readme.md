@@ -17,8 +17,8 @@ For license information please check **license.md**
 
 ## For development history please check **changelog.md**
 
-Current Status: **Initial Development#15.2**
-Current Version: **0.62**
+Current Status: **Initial Development#15.3**
+Current Version: **0.63**
 Updated: **December 31, 2022**
 
 ---
@@ -43,6 +43,6 @@ Updated: **December 31, 2022**
 #run!
 `python main.py`
 
-#demo account! `username: "admin" password: "admin"`
+#demo account! You can use the following information to login to the system to see how it works `username: "admin" password: "admin"`
 
 ---

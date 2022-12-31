@@ -15,7 +15,7 @@ block body %} {% include 'pyscript.html' %}
     );
     background-size: 400% 400%;
     animation: gradient 15s alternate-reverse infinite;
-    height: 100vh;
+    height: auto;
   }
 </style>
 
@@ -61,7 +61,7 @@ block body %} {% include 'pyscript.html' %}
     <div class="row-1" align="center">
       <div class="col-8 gap-3">
         {% if user.is_authenticated %}
-        <div class="mx-3 py-3 my-3 border border-primary border-2 rounded">
+        <div class="mx-3 py-3 my-2 border border-primary border-2 rounded">
           <h3>Personal Records</h3>
           <ul class="list-group list-group-flush" id="personal_records">
             {% for game in user.points %}
@@ -78,7 +78,7 @@ block body %} {% include 'pyscript.html' %}
         </div>
         {% endif %}
 
-        <div class="mx-3 py-3 my-5 border border-2 rounded border-warning">
+        <div class="mx-3 py-3 my-3 border border-2 rounded border-warning">
           <h3>Global Records</h3>
           <ul class="list-group list-group-flush" id="points">
             {% for g in game %}

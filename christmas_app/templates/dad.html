@@ -5,7 +5,7 @@ body %}
     height: auto;
   }
 </style>
-<div class="py-5 mx-3 my-2 px-5" align="center">
+<div class="py-3 mx-3 my-2 px-5" align="center">
   <h1 style="font-weight: bolder; color: aquamarine">
     Merry Christmas and Happy New Year 2023, {% if user.alias == "Dad" %} Dad{%
     elif user.alias == "Mom" %} Mom{%else%}{% endif %}
@@ -16,7 +16,19 @@ body %}
       'Mom' %} Mom{%else%}{% endif %}
     </h4>
   </div>
-  <p style="font-size: x-large">{{msg_us}}{% block mom %}{% endblock %}</p>
+  <p style="font-size: x-large">
+    &emsp;{{msg_us}}<br /><br />&emsp;<span style="color: blanchedalmond"
+      >{% block msg %}{{msg_dad}}{% endblock %}</span
+    >
+  </p>
+  <div align="start" style="color: darkcyan">
+    <p style="font-size: large">
+      <br />Best, <br />
+      Kittipich "Luke" Aiumbhornsin (Kan/Ning-Nong)
+      <br />December, 2022
+    </p>
+  </div>
+  <br />***
 </div>
 
 {% endblock %}

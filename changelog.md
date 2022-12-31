@@ -74,10 +74,12 @@ Config the System version in **init**.py
 
 - Initial Development#15.2: continue working on customized views, and overall improvement on December 31, 2022 -> **0.62**
 
+- Initial Development#15.3: continue working on customized views, answer key reasons given, and overall improvement on December 31, 2022 -> **0.63**
+
 ### > Notes
 
 - [x] Add game history look up on game page
-- [x] Add game answer sheet (partially done; reasons not yet given)
+- [x] Add game answer sheet ~~(partially done; reasons not yet given)~~
 - [ ] re-implement cake page for each person (might create new file and extends the base cake for each one)
 - https://www.w3schools.com/howto/howto_css_parallax.asp
 - https://www.w3schools.com/howto/howto_css_responsive_iframes.asp
