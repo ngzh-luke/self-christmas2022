@@ -78,6 +78,8 @@ Config the System version in **init**.py
 
 - Initial Testing: all expected performance are develop and ready for testing on January 1, 2023 -> **0.65**
 
+- Public Release: Testing passed, strengthen up details and ready for publishing on January 1, 2023 -> **1.0**
+
 ### > Notes
 
 - [x] Add game history look up on game page
