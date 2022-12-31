@@ -76,6 +76,8 @@ Config the System version in **init**.py
 
 - Initial Development#15.3: continue working on customized views, answer key reasons given, and overall improvement on December 31, 2022 -> **0.63**
 
+- Initial Testing: all expected performance are develop and ready for testing on January 1, 2023 -> **0.65**
+
 ### > Notes
 
 - [x] Add game history look up on game page

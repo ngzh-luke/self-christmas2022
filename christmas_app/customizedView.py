@@ -120,9 +120,10 @@ def ajtrithep():
             return redirect(url_for("cViews."+alias))
         except:
             return redirect(url_for('cViews.redirector'))
-    return render_template("ajTrithep_ajJade.html", user=current_user)
+    return render_template("ajTrithep_ajJade.html", user=current_user,title='just for Aj.Trithep ^_^')
 
 @cusViews.route("/for/AjJade/customized-celebration-view/") # aj.jade
+@login_required
 def ajjade():
     session['current'] = '/customized-view/'
     if current_user.alias != 'AjJade':
@@ -132,9 +133,10 @@ def ajjade():
             return redirect(url_for("cViews."+alias))
         except:
             return redirect(url_for('cViews.redirector'))
-    return render_template("ajTrithep_ajJade.html", user=current_user)
+    return render_template("ajTrithep_ajJade.html", user=current_user,title='just for Aj.Jade ^_^')
 
 @cusViews.route("/for/Papa/customized-celebration-view/") # papa
+@login_required
 def papa():
     session['current'] = '/customized-view/'
     if current_user.alias != 'Papa':
@@ -144,9 +146,10 @@ def papa():
             return redirect(url_for("cViews."+alias))
         except:
             return redirect(url_for('cViews.redirector'))
-    return render_template("grandma_papa.html", user=current_user)
+    return render_template("grandma_papa.html", user=current_user,title='just for Papa ^_^',msg=msg_gm_pp)
 
 @cusViews.route("/for/Grandma/customized-celebration-view/") # grandma
+@login_required
 def grandma():
     session['current'] = '/customized-view/'
     if current_user.alias != 'Grandma':
@@ -156,10 +159,11 @@ def grandma():
             return redirect(url_for("cViews."+alias))
         except:
             return redirect(url_for('cViews.redirector'))
-    return render_template("grandma_papa.html", user=current_user)
+    return render_template("grandma_papa.html", user=current_user,title='just for Grandma ^_^',msg=msg_gm_pp)
 
 
 @cusViews.route("/for/Kwan/customized-celebration-view/") # kwan
+@login_required
 def kwan():
     session['current'] = '/customized-view/'
     if current_user.alias != 'Kwan':
@@ -169,9 +173,10 @@ def kwan():
             return redirect(url_for("cViews."+alias))
         except:
             return redirect(url_for('cViews.redirector'))
-    return render_template("kwan.html", user=current_user)
+    return render_template("kwan.html", user=current_user,title='just for Kwan ^_^',msg=msg_kwan)
 
 @cusViews.route("/for/Wish/customized-celebration-view/") # wish
+@login_required
 def wish():
     session['current'] = '/customized-view/'
     if current_user.alias != 'Wish':
@@ -181,9 +186,10 @@ def wish():
             return redirect(url_for("cViews."+alias))
         except:
             return redirect(url_for('cViews.redirector'))
-    return render_template("wish.html", user=current_user)
+    return render_template("wish.html", user=current_user,title='just for Wish ^_^',msg=msg_wish)
 
 @cusViews.route("/for/Noemi/customized-celebration-view/") # noemi
+@login_required
 def noemi():
     session['current'] = '/customized-view/'
     if current_user.alias != 'Noemi':
@@ -193,9 +199,10 @@ def noemi():
             return redirect(url_for("cViews."+alias))
         except:
             return redirect(url_for('cViews.redirector'))
-    return render_template("noemi.html", user=current_user)
+    return render_template("noemi.html", user=current_user,title='just for Noemi ^_^',msg=msg_noemi)
 
 @cusViews.route("/for/Anna/customized-celebration-view/") # anna
+@login_required
 def anna():
     session['current'] = '/customized-view/'
     if current_user.alias != 'Anna':
@@ -205,9 +212,10 @@ def anna():
             return redirect(url_for("cViews."+alias))
         except:
             return redirect(url_for('cViews.redirector'))
-    return render_template("anna.html", user=current_user)
+    return render_template("anna.html", user=current_user,title='just for Anna ^_^',msg=msg_anna)
 
 @cusViews.route("/for/Candice/customized-celebration-view/") # candice
+@login_required
 def candice():
     session['current'] = '/customized-view/'
     if current_user.alias != 'Candice':
@@ -217,4 +225,4 @@ def candice():
             return redirect(url_for("cViews."+alias))
         except:
             return redirect(url_for('cViews.redirector'))
-    return render_template("candice.html", user=current_user)
+    return render_template("candice.html", user=current_user,title='just for Candice ^_^',msg=msg_candice)
