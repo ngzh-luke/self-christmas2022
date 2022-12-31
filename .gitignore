@@ -131,5 +131,8 @@ dmypy.json
 
 .DS_Store
 
+# Flask migration folder
 migrations/
 
+# personal msgs to people
+msg.py

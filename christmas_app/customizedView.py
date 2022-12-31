@@ -3,6 +3,7 @@ from flask import Blueprint, render_template, redirect, url_for, session, flash
 from flask_login import current_user, login_required
 from .models import User
 from ._tools_ import updateSessionTime
+from .msg import *
 
 cusViews = Blueprint('cViews', __name__)
 
@@ -41,7 +42,7 @@ def dad():
             return redirect(url_for("cViews."+alias))
         except:
             return redirect(url_for('cViews.redirector'))
-    return render_template("dad.html", user=current_user, title='just for Dad ^_^')
+    return render_template("dad.html", user=current_user, title='just for Dad ^_^',msg_dad=msg_dad, msg_us=msg_us)
 
 @cusViews.route("/for/Mom/customized-celebration-view/") # mom
 @login_required
@@ -54,7 +55,7 @@ def mom():
             return redirect(url_for("cViews."+alias))
         except:
             return redirect(url_for('cViews.redirector'))
-    return render_template("mom.html", user=current_user)
+    return render_template("mom.html", user=current_user,title='just for Mom ^_^',msg_mom=msg_mom,msg_us=msg_us)
 
 @cusViews.route("/for/Pa/customized-celebration-view/") # pa
 @login_required

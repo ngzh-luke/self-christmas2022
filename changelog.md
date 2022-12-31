@@ -72,6 +72,8 @@ Config the System version in **init**.py
 
 - Initial Development#15: general celebration added and customized view implementation starts, and overall improvement on December 31, 2022 -> **0.6**
 
+- Initial Development#15.2: continue working on customized views, and overall improvement on December 31, 2022 -> **0.62**
+
 ### > Notes
 
 - [x] Add game history look up on game page

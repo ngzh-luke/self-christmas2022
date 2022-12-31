@@ -6,9 +6,17 @@ body %}
   }
 </style>
 <div class="py-5 mx-3 my-2 px-5" align="center">
-  <h1 style="font-weight: bolder">Merry Christmas and Happy New Year, Dad</h1>
-  <div align="end"><h4>Customized for: Dad</h4></div>
-  <p style="font-size: x-large">letter starts here</p>
+  <h1 style="font-weight: bolder; color: aquamarine">
+    Merry Christmas and Happy New Year 2023, {% if user.alias == "Dad" %} Dad{%
+    elif user.alias == "Mom" %} Mom{%else%}{% endif %}
+  </h1>
+  <div align="end">
+    <h4 style="color: royalblue">
+      Customized for: {% if user.alias == "Dad" %} Dad{% elif user.alias ==
+      'Mom' %} Mom{%else%}{% endif %}
+    </h4>
+  </div>
+  <p style="font-size: x-large">{{msg_us}}{% block mom %}{% endblock %}</p>
 </div>
 
 {% endblock %}

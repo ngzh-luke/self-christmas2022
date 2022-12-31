@@ -11,14 +11,14 @@ It is meant to be the present in an occasion of Christmas 2022 and surprise for 
 
 ## Developer: Kittipich "Luke" Aiumbhornsin
 
-## Development Status: ~~**Developing**~~ Suspended until Dec 27, 2022
+## Development Status: **Developing** ~~Suspended until Dec 27, 2022~~
 
 For license information please check **license.md**
 
 ## For development history please check **changelog.md**
 
-Current Status: **Initial Development#15**
-Current Version: **0.6**
+Current Status: **Initial Development#15.2**
+Current Version: **0.62**
 Updated: **December 31, 2022**
 
 ---

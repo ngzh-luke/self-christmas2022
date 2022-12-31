@@ -48,4 +48,5 @@ def setLang():
         else:
             return redirect(session['current'])
     else:
-        abort(500)
+        session['LANG'] = 'EN'
+        return redirect(url_for('auth.logIn'))
