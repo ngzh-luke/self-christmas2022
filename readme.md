@@ -18,7 +18,7 @@ For license information please check **license.md**
 ## For development history please check **changelog.md**
 
 Current Status: **Public Release**
-Current Version: **1.2**
+Current Version: **1.21**
 Updated: **January 4, 2023**
 
 ---
