@@ -4,6 +4,7 @@ Run file of the application """
 
 from christmas_app import systemInfo, create_app
 from decouple import config as en_var # import the environment var
+import os
 # import pytz
 
 print("SystemInfo -> ", systemInfo)
@@ -12,4 +13,4 @@ print("SystemInfo -> ", systemInfo)
 # print(pytz.all_timezones) # List out all the timezone available
 if __name__ == '__main__':
     app = create_app()
-    app.run(debug=True, port=9999)
+    app.run(port=int(os.environ.get("PORT", 8080)),host='0.0.0.0',debug=True)
