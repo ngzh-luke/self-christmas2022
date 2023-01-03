@@ -80,11 +80,13 @@ Config the System version in **init**.py
 
 - Public Release: Testing passed, strengthen up details and ready for publishing on January 1, 2023 -> **1.0**
 
+- Public Release: strengthen up some details and fixing publishing bugs on January 3, 2023 -> **1.1**
+
 ### > Notes
 
 - [x] Add game history look up on game page
 - [x] Add game answer sheet ~~(partially done; reasons not yet given)~~
-- [ ] re-implement cake page for each person (might create new file and extends the base cake for each one)
+- [x] re-implement cake page for each person (might create new file and extends the base cake for each one)
 - https://www.w3schools.com/howto/howto_css_parallax.asp
 - https://www.w3schools.com/howto/howto_css_responsive_iframes.asp
 - https://www.w3schools.com/howto/howto_css_glowing_text.asp

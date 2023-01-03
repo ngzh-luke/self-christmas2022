@@ -18,8 +18,8 @@ For license information please check **license.md**
 ## For development history please check **changelog.md**
 
 Current Status: **Public Release**
-Current Version: **1.0**
-Updated: **January 1, 2023**
+Current Version: **1.1**
+Updated: **January 3, 2023**
 
 ---
 

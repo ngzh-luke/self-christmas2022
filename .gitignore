@@ -135,4 +135,4 @@ dmypy.json
 migrations/
 
 # personal msgs to people
-msg.py
+#msg.py

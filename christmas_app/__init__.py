@@ -146,8 +146,8 @@ class About():
             I hope you guys enjoy the present I have prepared for you guys this year. If you have anything to tell me, including comments, suggestions, \
                 questions, or even some bugs report please feel free to contact me or just click the buttons of actions below.'
 
-systemInfoObject = About(version=1.0, status='Public Release',
-                         build=20230101, version_note='Testing passed, strengthen up details and ready for publishing')
+systemInfoObject = About(version=1.1, status='Public Release',
+                         build=20230103, version_note='strengthen up some details and fixing publishing bugs')
 systemInfo = systemInfoObject.__str__()
 systemVersion = systemInfoObject.getSystemVersion()
 
@@ -161,4 +161,4 @@ def root_view():
     else:
         abort(403) # forbidden
 
-# - Public Release: Testing passed, strengthen up details and ready for publishing on January 1, 2023 -> **1.0**
+# - Public Release: strengthen up some details and fixing publishing bugs on January 3, 2023 -> **1.1**
