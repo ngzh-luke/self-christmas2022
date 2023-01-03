@@ -86,6 +86,8 @@ Config the System version in **init**.py
 
 - Public Release: bugs fixed on January 4, 2023 -> **1.21**
 
+- Public Release: bugs fixed on January 4, 2023 -> **1.22**
+
 ### > Notes
 
 - [x] Add game history look up on game page
