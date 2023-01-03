@@ -3,6 +3,7 @@
 **©Kittipich Aiumbhornsin**
 
 - self-christmas source code
+- The application is now live at: https://self-christmas2022-m96o-main-h56fefi5ya-wm.a.run.app
 
 ---
 
