@@ -26,7 +26,7 @@ Updated: **January 4, 2023**
 
 ## Instructions
 
-#clone the repo
+#clone the repo or head to the link given
 `git clone`
 
 #if already cloned, update the local repository
